@@ -27,6 +27,7 @@ public class index extends HttpServlet {
 	/**
 	 * @see Servlet#init(ServletConfig)
 	 */
+    
 	public void init(ServletConfig config) throws ServletException {
 		// TODO Auto-generated method stub
 	}
@@ -36,16 +37,27 @@ public class index extends HttpServlet {
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String opération = request.getParameter("opération");
+		String opération = request.getParameter("action");
 		
 		switch(opération){
 		
-		case "Vidéastes" : this.afficherPage(request, response, opération); break;
+		case "signup_user" : break;
+		case "signup_check" : break;
+		case "tools" : break;
+		case "login" : break;
+		case "all_games" : break;
+		case "new_users" : break;
+		case "posts" : break;
+		case "feed_posts" : break;
+		case "new_feed_post" : break;
+		case "recherche_user" : break;
+		case "follow_user" : break;
+		case "unfollow_user" : break;
+		case "subscriptions" : break;
 		
 		default : this.afficherPage(request, response, opération); break;
 		
 		}
-		
 		
 	}
 	

@@ -1,6 +1,4 @@
-<?php
-
-	require_once("db.php");
+require_once("db.php");
 
 	switch($_GET['action']){
 		case "signup_user" : signup_user(); break;
@@ -339,16 +337,3 @@
 		}
 
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-?>
