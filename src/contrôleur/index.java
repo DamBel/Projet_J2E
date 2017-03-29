@@ -70,7 +70,8 @@ public class index extends HttpServlet {
 	 */
 	private void afficherPage(HttpServletRequest request, HttpServletResponse response, String page) throws ServletException, IOException {
 		
-		request.getRequestDispatcher("./vue/index.html").forward(request, response);	
+		if (page.equals("") || page == null)
+			request.getRequestDispatcher("./vue/index.html").forward(request, response);	
 		
 	}
 

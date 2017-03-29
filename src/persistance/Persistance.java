@@ -13,10 +13,11 @@ public class Persistance implements IPersistance {
 	
 	//Coordonnées pour la base
 	private final String BASE = "oracle";
-	private final String HOST = "Lenovo-PC";
-	private final String PORT = "1521";
-	private final String LOGIN = "SYSTEM";
-	private final String PASSWORD = "admin";
+	private final String HOST = "localhost";
+	private final String PORT = "3306";
+	private final String LOGIN = "root";
+	private final String PASSWORD = "root";
+	private final String NOM_BDD = "taverne";
 	
 	private Connection connexion;
 	
@@ -39,7 +40,7 @@ public class Persistance implements IPersistance {
 		
 		case "mysql" :
 			this.connexion = DriverManager.getConnection(
-					"jdbc:mysql://" + this.HOST,
+					"jdbc:mysql://" + this.HOST + ":" + this.PORT + "/" + this.NOM_BDD,
 					this.LOGIN,
 					this.PASSWORD);
 			//trucs
