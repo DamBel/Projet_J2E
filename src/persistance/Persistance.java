@@ -12,7 +12,8 @@ public class Persistance implements IPersistance {
 	
 	
 	//Coordonnées pour la base
-	private final String BASE = "oracle";
+	private final String BASE = "mysql";
+	
 	private final String HOST = "localhost";
 	private final String PORT = "3306";
 	private final String LOGIN = "root";

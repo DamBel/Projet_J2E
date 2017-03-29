@@ -39,24 +39,30 @@ public class index extends HttpServlet {
 		
 		String opération = request.getParameter("action");
 		
-		switch(opération){
+		if (opération == null){
+			this.afficherPage(request, response, opération);
+		}
+		else{
 		
-		case "signup_user" : break;
-		case "signup_check" : break;
-		case "tools" : break;
-		case "login" : break;
-		case "all_games" : break;
-		case "new_users" : break;
-		case "posts" : break;
-		case "feed_posts" : break;
-		case "new_feed_post" : break;
-		case "recherche_user" : break;
-		case "follow_user" : break;
-		case "unfollow_user" : break;
-		case "subscriptions" : break;
-		
-		default : this.afficherPage(request, response, opération); break;
-		
+			switch(opération){
+			
+			case "signup_user" : break;
+			case "signup_check" : break;
+			case "tools" : break;
+			case "login" : break;
+			case "all_games" : break;
+			case "new_users" : break;
+			case "posts" : break;
+			case "feed_posts" : break;
+			case "new_feed_post" : break;
+			case "recherche_user" : break;
+			case "follow_user" : break;
+			case "unfollow_user" : break;
+			case "subscriptions" : break;
+			
+			default : this.afficherPage(request, response, opération); break;
+			
+			}
 		}
 		
 	}
@@ -70,7 +76,7 @@ public class index extends HttpServlet {
 	 */
 	private void afficherPage(HttpServletRequest request, HttpServletResponse response, String page) throws ServletException, IOException {
 		
-		if (page.equals("") || page == null)
+		if (page == null || page.equals(""))
 			request.getRequestDispatcher("./vue/index.html").forward(request, response);	
 		
 	}
