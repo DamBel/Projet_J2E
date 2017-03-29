@@ -26,9 +26,10 @@ public class index extends HttpServlet {
        
     /**
      * @throws SQLException 
+     * @throws ClassNotFoundException 
      * @see HttpServlet#HttpServlet()
      */
-    public index() throws SQLException {
+    public index() throws SQLException, ClassNotFoundException {
         super();
         
         this.persistance = new Persistance();
