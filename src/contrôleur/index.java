@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class index
  */
-@WebServlet("/")
+@WebServlet("/controleur")
 public class index extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -20,6 +20,7 @@ public class index extends HttpServlet {
      * @see HttpServlet#HttpServlet()
      */
     public index() {
+    	
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,6 +37,8 @@ public class index extends HttpServlet {
 	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+    	request.setAttribute("org.apache.catalina.ASYNC_SUPPORTED", true);
 		
 		String opération = request.getParameter("action");
 		
