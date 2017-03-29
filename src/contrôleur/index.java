@@ -1,6 +1,8 @@
 package contrôleur;
 
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.sql.SQLException;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -9,20 +11,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import persistance.IPersistance;
+import persistance.Persistance;
+
 /**
  * Servlet implementation class index
  */
-@WebServlet("/controleur")
+@WebServlet("/home")
 public class index extends HttpServlet {
+	
+	private IPersistance persistance;	
+	
 	private static final long serialVersionUID = 1L;
        
     /**
+     * @throws SQLException 
      * @see HttpServlet#HttpServlet()
      */
-    public index() {
-    	
+    public index() throws SQLException {
         super();
-        // TODO Auto-generated constructor stub
+        
+        this.persistance = new Persistance();
     }
 
 	/**
@@ -38,8 +47,6 @@ public class index extends HttpServlet {
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-    	request.setAttribute("org.apache.catalina.ASYNC_SUPPORTED", true);
-		
 		String opération = request.getParameter("action");
 		
 		if (opération == null){
@@ -48,7 +55,7 @@ public class index extends HttpServlet {
 		else{
 		
 			switch(opération){
-			
+			/*
 			case "signup_user" : break;
 			case "signup_check" : break;
 			case "tools" : break;
@@ -62,7 +69,7 @@ public class index extends HttpServlet {
 			case "follow_user" : break;
 			case "unfollow_user" : break;
 			case "subscriptions" : break;
-			
+			*/
 			default : this.afficherPage(request, response, opération); break;
 			
 			}
@@ -77,11 +84,10 @@ public class index extends HttpServlet {
 	 * @throws ServletException
 	 * @throws IOException
 	 */
-	private void afficherPage(HttpServletRequest request, HttpServletResponse response, String page) throws ServletException, IOException {
+	private void afficherPage(HttpServletRequest request, HttpServletResponse response, String opération) throws ServletException, IOException {
 		
-		if (page == null || page.equals(""))
-			request.getRequestDispatcher("./vue/index.html").forward(request, response);	
 		
 	}
+		
 
 }
