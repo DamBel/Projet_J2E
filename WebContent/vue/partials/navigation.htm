@@ -1,0 +1,42 @@
+<div class="navbar-fixed" style="margin-top:20px;">
+    <nav>
+        <div class="nav-wrapper simple" style="z-index: 500; ">
+          <a href="" style="width:50px;" data-activates="slide-out" class="left button-collapse"><i class="material-icons" onClick="ouvrir();">view_headline</i></a>
+        </div>
+    </nav>
+</div>
+
+<ul id="slide-out" class="side-nav">
+    <li><div class="userView">
+      <div class="background">
+        <img src="images/blur.png">
+      </div>
+      <a href="#login" ng-hide="loggedIn != false && loggedIn != undefined" onClick="$('.button-collapse').sideNav('hide');"><img class="circle" src="images/unknown.png"></a>
+      <a href="" ng-show="loggedIn != false && loggedIn != undefined"><img class="circle" src="{{user.imgPath}}"></a>
+      <a href="#login" ng-hide="loggedIn != false && loggedIn != undefined" onClick="$('.button-collapse').sideNav('hide');"><span class="white-text name">Veuillez vous connecter.</span></a>
+      <a href="#login" ng-hide="loggedIn != false && loggedIn != undefined" onClick="$('.button-collapse').sideNav('hide');"><span class="white-text email">&nbsp;</span></a>
+      <a href="" ng-show="loggedIn != false && loggedIn != undefined"><span class="white-text name">{{user.pseudo}}<i class="twa twa-{{user.flag}}-flag" style="margin-left: 10px; vertical-align: middle;"></i></span></a>
+      <a href="" ng-show="loggedIn != false && loggedIn != undefined"><span class="white-text email">{{user.email}}</span></a>
+    </div></li>
+    <li><a href="#/" onClick="$('.button-collapse').sideNav('hide');"><i class="material-icons left">home</i>Accueil</a></li>
+    <li><div class="divider"></div></li>
+    <li><a href="#videastes" onClick="$('.button-collapse').sideNav('hide');"><i class="material-icons left">videocam</i>Vidéastes</a></li>
+    <li><div class="divider"></div></li>
+    <li ng-show="loggedIn != false && loggedIn != undefined"><a href="#feed" onClick="$('.button-collapse').sideNav('hide');"><i class="material-icons left">subject</i>Feed</a></li>
+    <li ng-show="loggedIn != false && loggedIn != undefined"><div class="divider"></div></li>
+    <!--
+    <li ng-show="loggedIn != false && loggedIn != undefined"><a href="#games" onClick="$('.button-collapse').sideNav('hide');"><i class="material-icons left">games</i>Games</a></li>
+    <li ng-show="loggedIn != false && loggedIn != undefined"><div class="divider"></div></li>
+    -->
+    <li ng-show="loggedIn != false && loggedIn != undefined"><a href="#subs" onClick="$('.button-collapse').sideNav('hide');"><i class="material-icons left">people</i>Amis</a></li>
+    <li ng-show="loggedIn != false && loggedIn != undefined"><div class="divider"></div></li>
+    <li><a ng-click="redirectTo('https://github.com/tommywalkie/taverne')" onClick="$('.button-collapse').sideNav('hide');" class="valign" style="cursor: pointer;"><img src="images/tools/github.png" style="height: 22px; margin-right: 35px; vertical-align: middle;"></img>Github</a></li>
+    <li><div class="divider"></div></li>
+    <li><a href="#updates" onClick="$('.button-collapse').sideNav('hide');"><i class="material-icons left">new_releases</i>Mises à jour <span class="new badge purple lighten-1" data-badge-caption="Nouveau !"></span></a></li>
+    <li><div class="divider"></div></li>
+    <li><a href="#home" onClick="$('.button-collapse').sideNav('hide');" ng-click="disconnect()" ng-show="loggedIn != false && loggedIn != undefined"><i class="material-icons left">exit_to_app</i>Deconnexion</a></li>
+</ul>
+
+
+
+<script src="js/ui-materialize.js"></script>

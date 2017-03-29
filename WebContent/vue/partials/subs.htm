@@ -1,0 +1,76 @@
+<div class="row">
+  <div ng-include="'partials/menu-fixed.htm'"></div>
+
+
+  <div class="content" style="margin-top:-20px; ">
+
+      <div ng-include="'partials/navigation.htm'"></div>
+      <script src="js/ui-materialize.js"></script>
+
+      	<div class="row center-align feed-actions" style="margin-top: 45px;">
+			<div class="col s12">
+
+				<button class="btn waves-effect waves-light" type="submit" name="action" ng-click="displayForm1()" style="background-color: cadetblue;">
+					Rechercher un utilisateur <i class="material-icons right">search</i>
+            	</button>
+
+
+			</div>
+		</div>
+
+		  <form class="formulaire valign center" style="" ng-show="form1 == true" ng-class="form1class">
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="user_search" data-length="500" ng-model="pseudo_search"></input>
+                <label for="user_search" class="" style="width:100%;">Rechercher un utilisateur</label>
+              </div>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit" name="action" ng-click="rechercher()" style="margin-bottom:20px;">
+				Rechercher <i class="material-icons right">search</i>
+        	</button>
+
+          </form>
+
+        <h1 class="simple" style="width: 100%;" ng-show="results != null">RESULTATS DE LA RECHERCHE</h1>
+
+        <div ng-repeat="(key, item) in results">
+
+	  		<div class="row valign-demo valign-wrapper z-depth-2" style="background-color: white; margin-top:30px; width:90%;" ng-class="form1class">
+                <div class="col s12">
+                	<div class="col s10">
+                    	<img ng-src="{{item.imgPath}}" id="{{item.user_id}}" style="height: 25px; margin-right: 10px; display: inline; vertical-align: bottom; margin-top: 15px; margin-bottom: 15px;"><p class="valign" style="display: -webkit-inline-box;">{{item.pseudo}} <i class="twa twa-{{item.flag}}-flag"></i></p> 
+                    </div>
+                    <div class="col s2" ng-hide="item.follow == 1">
+                    	<button class="btn waves-effect waves-light" type="submit" name="action" style="background-color: cornflowerblue; height: 25px; margin-right: 10px; display: flex; vertical-align: sub; margin-top: 15px; margin-bottom: 15px; line-height: 50%; padding: inherit; float: right;" ng-click="follow_user(item.user_id); item.follow = 0; pushInJSON(item.user_id, item.pseudo, item.imgPath, item.flag); toggleFollow($index);"><i class="material-icons">person_add</i>
+                    </div>
+                    <div class="col s2" ng-hide="item.follow == 0">
+                        <button class="btn waves-effect waves-light" type="submit" name="action" style="background-color: coral; height: 25px; margin-right: 10px; display: flex; vertical-align: sub; margin-top: 15px; margin-bottom: 15px; line-height: 50%; padding: inherit; float: right;" ng-click="item.follow = 1; unfollow_user(item.user_id); deleteFromJSON(item.user_id); toggleFollow($index);"><i class="material-icons">clear</i>    
+                    </div>
+            	</button>
+                </div>                        
+            </div>
+        </div>
+
+        <h1 class="simple" style="width: 100%;">ABONNEMENTS</h1>
+
+        <div ng-repeat="(key, item) in subscriptions | orderBy: 'pseudo'">
+
+	  		<div class="row valign-demo valign-wrapper z-depth-2" style="background-color: white; margin-top:30px; width:90%;">
+                <div class="col s12">
+                	<div class="col s10">
+                    	<img ng-src="{{item.imgPath}}" id="{{item.user_id}}" style="height: 25px; margin-right: 10px; display: inline; vertical-align: bottom; margin-top: 15px; margin-bottom: 15px;"><p class="valign" style="display: -webkit-inline-box;">{{item.pseudo}} <i class="twa twa-{{item.flag}}-flag"></i> </p> 
+                    </div>
+                    <div class="col s2">
+                    	<button class="btn waves-effect waves-light" type="submit" name="action" style="background-color: coral; height: 25px; margin-right: 10px; display: flex; vertical-align: sub; margin-top: 15px; margin-bottom: 15px; line-height: 50%; padding: inherit; float: right;" ng-click="unfollow_user(item.user_id); deleteFromJSON(item.user_id);"><i class="material-icons">clear</i>
+                    </div>
+            	</button>
+                </div>                        
+            </div>
+
+            
+
+        </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,39 @@
+<div class="row">
+  	<div ng-include="'partials/menu-fixed.htm'"></div>
+
+
+  	<div class="content" style="margin-top:-20px;">
+
+  		<div ng-include="'partials/navigation.htm'"></div>
+  		<script src="js/ui-materialize.js"></script>
+
+  		<div ng-repeat="(key, item) in updates | orderBy: '-update_id'">
+
+	  		<div class="row valign-demo valign-wrapper" style="background-color: white; margin-top:30px; padding: 20px; width:90%; box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.3);">
+                <div class="col s12">
+                	<div class="update-header" style="">
+	                	<p class="update-title valign" style="margin-top: auto; word-wrap: break-word; -moz-hyphens:auto; -webkit-hyphens:auto; -o-hyphens:auto; hyphens:auto;">{{item.description}}</p>
+	                    <p class="version valign" style="margin-top: auto;">Version : {{item.version}} 
+	                    	<span ng-show="item.new == true" class="new badge purple lighten-1" data-badge-caption="Nouveau !" style="color: white;"></span>
+	                    </p>
+
+                	</div>
+                    <div ng-repeat="(key2, item2) in item.details">
+                    	<div class="row valign-wrapper">
+	                    	<div style="/* display: inline; */word-wrap: break-word;-moz-hyphens:auto;-webkit-hyphens:auto;-o-hyphens:auto;hyphens:auto;">
+	                    		<i class="material-icons update-{{item2.type}}" style="vertical-align: sub; font-size: 20px;">{{item2.type}}</i>
+		                    	<p class="valign update-{{item2.type}} update-details-title" style="margin-top: auto;display: inline; margin-left: 10px; vertical-align: text-bottom; margin-right: 5px;">{{item2.title}} :</p>
+		                    	<p class="valign update-{{item2.type}}" style="margin-top: auto; display: inline; vertical-align: text-bottom;">{{item2.content}}</p>
+	                    	</div>
+                    	</div>
+                    </div>
+
+                </div>                        
+        </div>
+            
+
+      </div>
+
+  	</div>
+
+</div>

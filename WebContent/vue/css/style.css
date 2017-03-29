@@ -1,0 +1,724 @@
+@font-face{
+    font-family : "Overwatch";
+    src : url('http://us.battle.net/forums/static/fonts/bignoodletoo/bignoodletoo.woff');
+}
+
+img.emoji {  
+  display: inline;
+    vertical-align: sub;
+    height: 20px;
+}
+
+.overwatch_rank{
+	font-family: 'Overwatch';
+}
+
+.formulaire{
+	background-color: white;
+	margin-top: 30px;
+	padding-left: 5%;
+	padding-right: 5%;
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	padding-bottom: 20px;
+	padding-top: 20px;
+	box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.3);
+}
+
+p{
+	word-wrap: break-word; 
+	-moz-hyphens:auto; 
+	-webkit-hyphens:auto; 
+	-o-hyphens:auto; 
+	hyphens:auto;
+}
+
+body {
+    margin: 0;
+    background-color: #e6e6e6 !important;
+}
+
+.visible {
+	visibility: visible;
+}
+
+.invisible {
+	display: none !important;
+}
+
+.signup .formulaire {
+	width:60%;
+}
+
+.picker__holder{
+	overflow-y: scroll;
+}
+
+
+.hint{
+	padding-top: 15px;
+    padding-bottom: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.hint.error{
+	background-color: #ff5959;
+	color: #c10505;
+}
+
+.hint.check_circle{
+	background-color: #5ced3b;
+	color: #167a00;
+}
+
+.hint i {
+	margin-right: 15px;
+	vertical-align: bottom;
+}
+
+.hljs, .hljs-subst {
+    font-size: 30%;
+    color: #444;
+    /* background-color: beige; */
+}
+
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-left .5s;
+
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+
+
+.blur{
+	-webkit-filter: blur(20px);
+  	-moz-filter: blur(20px);
+	-o-filter: blur(20px);
+ 	-ms-filter: blur(20px);
+ 	filter: blur(20px);
+}
+
+.dark{
+	-webkit-filter: brightness(20%);
+  	-moz-filter: brightness(20%);
+	-o-filter: brightness(20%);
+ 	-ms-filter: brightness(20%);
+ 	filter: brightness(20%);
+}
+
+h1 {
+	text-align: center;
+	display: block;
+    font-size: 2.5em;
+    font-family: 'Roboto', sans-serif;
+	font-weight: 100;
+
+}
+
+/* Updates page */
+
+.version{
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	color: #606060;
+}
+
+.update-title{
+	font-family: 'Roboto', sans-serif;
+	font-weight: 600;
+	color: #000000;
+	margin-right: 10px;
+}
+
+.update-header{
+	display: -webkit-inline-box;
+}
+
+.update-details-title{
+	font-family: 'Roboto', sans-serif;
+	font-weight: 600;
+}
+
+.update-build{
+	color: #515151;
+}
+
+.update-bug_report{
+	color: #ff7700;
+}
+
+.update-add_circle{
+	color: #00a30a;
+}
+
+.center-container{
+	width:100%;
+
+    /* Firefox */
+    display:-moz-box;
+    -moz-box-pack:center;
+    -moz-box-align:center;
+
+    /* Safari and Chrome */
+    display:-webkit-box;
+    -webkit-box-pack:center;
+    -webkit-box-align:center;
+
+    /* W3C */
+    display:box;
+    box-pack:center;
+    box-align:center;
+}
+
+.button{
+	height: 50px;
+    line-height: 50px;
+    font-size: 0.9em;
+    /* position: relative; */
+    width: 100%;
+    margin: auto;
+    
+}
+
+.button-bar{
+	display: flex;
+     align-items: center;
+     justify-content: center;
+}
+
+.sidenav-button{
+	visibility: visible;
+}
+
+#slide-out{
+	background-color: #333333;
+}
+
+#slide-out a{
+	color: white;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+}
+
+#slide-out span{
+	color: white;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+}
+
+#slide-out i{
+	color: white;
+}
+
+#slide-out::-webkit-scrollbar{
+	display: none;
+}
+
+.divider{
+	background-color: #404040;
+}
+
+nav{
+	background-color: #303030;
+}
+
+.navbar-fixed .sidenav-button {
+	display: none;
+}
+
+.navbar-fixed li {
+	display: inline;
+}
+
+.welcome p{
+	color: white;
+	font-size: 2em;
+}
+
+.sidenav-active{
+	width: 250px;
+}
+
+.main-translate{
+	margin-left: 250px;
+	margin-right: -500px;
+	position: fixed;
+}
+
+
+.main-translate .parallax-container img {
+	position: fixed;
+}
+
+.feed-actions .btn {
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
+
+.banniere{
+	position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background-color: black;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+    filter: alpha(opacity=50);
+    -moz-opacity: 0.5;
+    -khtml-opacity: 0.5;
+    opacity: 0.6;
+}
+
+.parallax-container{
+	height: 110vh;
+	background-size: cover;
+}
+
+#menu-fixed span {
+	font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+#menu-fixed {
+	background-color: #333333;
+}
+
+#menu-fixed::-webkit-scrollbar{
+	display: none;
+}
+
+#menu-fixed a {
+	color: white;
+	font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+#menu-fixed i {
+	color: white;
+}
+
+.signup .parallax-container{
+	height: 100%;
+	min-height: 100vh;
+	background-size: cover;
+}
+
+.login .formulaire{
+	min-width: 500px;
+}
+
+.input-field.col label {
+    left: 0rem;
+}
+
+.sidenav-content{
+	-webkit-animation-duration: 2s;
+    -webkit-animation-delay: 0s;
+    -webkit-animation-iteration-count: 1;
+}
+
+.iframe{
+	border: 0; position:absolute; top:0; left:0; right:0; bottom:0; width:100%; height:100%;
+}
+
+.simple{
+	font-family: 'Roboto', sans-serif;
+	font-weight: 100;
+}
+
+.presentation .card{
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+.card .card-content {
+    padding: 24px;
+    border-radius: 0 0 2px 2px;
+    text-align: center;
+    font-size: 40px;
+    -vendor-animation-duration: 3s;
+  -vendor-animation-delay: 2s;
+  -vendor-animation-iteration-count: infinite;
+}
+
+.card .card-content p{
+	font-family: 'Roboto', sans-serif;
+	font-weight: 100;
+	font-size: 0.6em;
+	white-space: pre-wrap;
+}
+
+.card .card-content h1{
+	margin-top: -5px;
+}
+
+.card .card-image {
+	min-height:200px;
+	display: block;
+  	background-position: center center;
+  	background-size: cover;
+  	min-width: 100%;
+  	background-repeat: no-repeat;
+}
+
+.youtuber-section{
+	margin-left: 40px;
+	margin-right: 40px;
+	margin-top: 40px;
+	-webkit-animation-duration: 2s;
+    -webkit-animation-delay: 1s;
+    -webkit-animation-iteration-count: 1;
+}
+
+.youtuber-section .card {
+	background-color: #ffffff;
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	cursor: pointer;
+}
+
+.youtuber-section .card-content p {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	font-style: italic;
+	font-size: 0.4em;
+	white-space: pre-wrap;
+	}
+
+.youtuber-section .card:hover{
+	background-color: #191919;
+	color: #ffffff;
+	
+}
+
+.presentation .card-content {
+		min-height: 160px;
+		max-height: 400px;
+		  -vendor-animation-duration: 3s;
+  -vendor-animation-delay: 2s;
+  -vendor-animation-iteration-count: infinite;
+}
+
+.games-section .card-content p {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	font-style: italic;
+	font-size: 0.4em;
+	white-space: pre-wrap;
+}
+
+.games-section .card-title {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	font-size: 0.5em;
+	white-space: pre-wrap;
+	line-height: 10px;
+}
+
+.games-section .card-content span {
+		font-size: medium;
+	}
+
+
+.techno-card img {
+	display: block;
+    margin: 0 auto;
+	min-height: 30px;
+	max-height: 50px;
+	filter: grayscale(80%);
+	-webkit-filter: grayscale(80%);
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+}
+
+.techno-card:hover img {
+	filter: grayscale(0%);
+	-webkit-filter: grayscale(0%);
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+}
+
+.techno-card a {
+	display: block;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 20px;
+    color: black;
+    font-family: 'Roboto', sans-serif;
+	font-weight: 100;
+}
+.youtuber-section .card-title {
+		font-size: large;
+		white-space: nowrap;
+	}
+
+#modal-background {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    opacity: .50;
+    -webkit-opacity: .5;
+    -moz-opacity: .5;
+    filter: alpha(opacity=50);
+    z-index: 1000;
+}
+
+#modal-content {
+    background-color: white;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    box-shadow: 0 0 10px 0 #222;
+    -webkit-box-shadow: 0 0 10px 0 #222;
+    -moz-box-shadow: 0 0 10px 0 #222;
+    display: none;
+    top: 10%;
+    right: 5%;
+    left: 5%;
+    bottom: 10%;
+    min-height: 240px;
+    padding: 10px;
+    position: fixed;
+    z-index: 1000;
+}
+
+#modal-content img {
+    min-height: 40px;
+    max-height: 100px;
+
+}
+
+#modal-background.active, #modal-content.active {
+    display: block;
+}​
+
+@media only screen and (max-width : 1113px) {
+
+	.presentation .card-content {
+		min-height: 160px;
+		max-height: 900px;
+	}
+
+	.youtuber-section .card-title {
+		font-size: 2vw;
+		white-space: nowrap;
+	}
+
+	.games-section .card-content span {
+		font-size: medium;
+	}
+
+}
+
+@media only screen and (min-width : 993px) {
+	.content{
+		margin-left: 300px;
+	}
+
+	.navbar-fixed {
+		display: none;
+	}
+}
+
+@media only screen and (max-width : 740px) {
+
+	.navbar-fixed .sidenav-button {
+		display: inline;
+	}
+
+	.navbar-fixed li {
+		display: none;
+	}
+
+ 	.card .card-content p {
+		font-family: 'Roboto', sans-serif;
+		font-weight: 100;
+	}
+
+	.youtuber-section .card-title {
+		font-size: 2vw;
+		white-space: nowrap;
+	}
+
+	.presentation .card-content {
+		min-height: 160px;
+		max-height: 900px;
+		font-family: 'Roboto', sans-serif;
+	}
+
+	.signup .formulaire {
+		width:80%;
+	}
+
+	.games-section .card-content {
+		padding: 10px;
+	}
+
+	.games-section .card-content span {
+		font-size: small;
+	}
+
+}
+
+@media only screen and (max-width : 600px) {
+
+	.navbar-fixed .sidenav-button {
+		display: inline;
+	}
+
+	.navbar-fixed li {
+		display: none;
+	}
+
+ 	.card .card-content p {
+		font-family: 'Roboto', sans-serif;
+		font-weight: 100;
+	}
+
+	.youtuber-section .card-content p {
+		display: none;
+	}
+
+	.presentation .card-content {
+		min-height: 160px;
+		max-height: 900px;
+		font-family: 'Roboto', sans-serif;
+	}
+
+	h1 {
+	    font-size: 2.3em;
+	}
+
+	.signup .formulaire {
+		width:80%;
+	}
+
+	.hint i {
+		margin-right: 10px;
+	}
+
+	.login .formulaire{
+		min-width: 300px;
+	}
+
+	.games-section .card-image {
+		min-height: inherit;
+    	height: 150px;
+	}
+
+	.games-section .card-content {
+		padding: 10px;
+	}
+
+	.games-section .card-content span {
+		font-size: small;
+	}
+
+
+
+}
+
+@media only screen and (max-width : 548px) {
+
+ 	.home-logo {
+		font-size: 15px;
+	}
+
+	.welcome p{
+		font-size: 1.5em;
+
+	}
+
+	.youtuber-section .card .card-content {
+    	padding: 10px;
+	}
+
+ 	.card .card-content p {
+		font-family: 'Roboto', sans-serif;
+		font-weight: 100;
+		font-size: 15px;
+	}
+
+	.card .card-title {
+	    font-size: 18px;
+	    text-align: center;
+	}
+
+	.update-header{
+		display: inline-block;
+	}
+
+	.youtuber-section .card-content p {
+		display: none;
+	}
+
+	.youtuber-section .card-image {
+		height: 120px;
+		min-height: 120px;
+	}
+
+	.youtuber-section .card-title {
+		font-size: 3vw;
+		white-space: nowrap;
+	}
+
+	.presentation .card-content {
+		min-height: 160px;
+		max-height: 900px;
+		font-size: 1.0em;
+		font-family: 'Roboto', sans-serif;
+	}
+
+	.techno-section a{
+		font-size: 100%;
+		white-space: nowrap;
+	}
+
+
+
+	.techno-section img{
+		min-height: 40px;
+		max-height: 60px;
+	}
+
+	h1 {
+	    font-size: 1.8em;
+	}
+
+	.login .parallax-container{
+		/*height: inherit;*/
+	}
+
+	.games-section .card-image {
+		min-height: inherit;
+    	height: 150px;
+	}
+
+	.games-section .card-content {
+		padding: 10px;
+	}
+
+	.games-section .card-content span {
+		font-size: small;
+	}
+
+}

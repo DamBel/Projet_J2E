@@ -1,0 +1,30 @@
+<ul id="menu-fixed" class="side-nav fixed">
+    <li><div class="userView">
+      <div class="background">
+        <img src="images/blur.png">
+      </div>
+      <a href="#login" ng-hide="loggedIn != false && loggedIn != undefined"><img class="circle" src="images/unknown.png"></a>
+      <a href="" ng-show="loggedIn != false && loggedIn != undefined"><img class="circle" src="{{user.imgPath}}"></a>
+      <a href="#login" ng-hide="loggedIn != false && loggedIn != undefined"><span class="white-text name">Veuillez vous connecter.</span></a>
+      <a href="#login" ng-hide="loggedIn != false && loggedIn != undefined"><span class="white-text email">&nbsp;</span></a>
+      <a href="" ng-show="loggedIn != false && loggedIn != undefined"><span class="white-text name">{{user.pseudo}}<i class="twa twa-{{user.flag}}-flag" style="margin-left: 10px; vertical-align: middle;"></i></span></a>
+      <a href="" ng-show="loggedIn != false && loggedIn != undefined"><span class="white-text email">{{user.email}}</span></a>
+    </div></li>
+    <li><a href="#/"><i class="material-icons left">home</i>Accueil</a></li>
+    <li><div class="divider"></div></li>
+    <li><a href="#videastes"><i class="material-icons left">videocam</i>Vidéastes</a></li>
+    <li><div class="divider"></div></li>
+    <li ng-show="loggedIn != false && loggedIn != undefined"><a href="#feed"><i class="material-icons left">subject</i>Feed</a></li>
+    <li ng-show="loggedIn != false && loggedIn != undefined"><div class="divider"></div></li>
+    <li ng-show="loggedIn != false && loggedIn != undefined"><a href="#subs"><i class="material-icons left">people</i>Amis</a></li>
+    <li ng-show="loggedIn != false && loggedIn != undefined"><div class="divider"></div></li>
+    <!--
+    <li ng-show="loggedIn != false && loggedIn != undefined"><a href="#games"><i class="material-icons left">games</i>Games</a></li>
+    <li ng-show="loggedIn != false && loggedIn != undefined"><div class="divider"></div></li>
+    -->
+    <li><a ng-click="redirectTo('https://github.com/tommywalkie/taverne')" class="valign" style="cursor: pointer;"><img src="images/tools/github.png" style="height: 22px; margin-right: 35px; vertical-align: middle;"></img>Github</a></li>
+    <li><div class="divider"></div></li>
+    <li><a href="#updates"><i class="material-icons left">new_releases</i>Mises à jour <span class="new badge purple lighten-1" data-badge-caption="Nouveau !"></span></a></li>
+    <li><div class="divider"></div></li>
+    <li><a href="#home" ng-click="disconnect()" ng-show="loggedIn != false && loggedIn != undefined"><i class="material-icons left">exit_to_app</i>Deconnexion</a></li>
+</ul>

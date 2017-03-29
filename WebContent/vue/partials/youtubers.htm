@@ -1,0 +1,68 @@
+<div class="row">
+  <div ng-include="'partials/menu-fixed.htm'"></div>
+  
+
+  <div class="content" style="margin-top:-20px;">
+
+        <div ng-include="'partials/navigation.htm'"></div>
+        <script src="js/ui-materialize.js"></script>
+        
+        <div class="youtuber-section animated fadeIn" >
+
+            <div class="col s12">
+                <h1>VID&Eacute;ASTES</h1>
+            </div>
+
+            <div class="row">
+
+                <div ng-hide="videastes == null" ng-repeat="videaste in videastes">
+                    <div class="col s6 m6 l3">
+                        <div class="card youtuber" id="{{videaste.id}}" imgPath="{{videaste.imgPath}}" youtuberName="{{videaste.name}}" nationalite="{{videaste.flag}}" ng-click="myFunc(videaste.id)">
+                            <div class="card-image" ng-style="{'background-image':'url({{videaste.imgPath}})'}"></div>
+                            <div class="card-content">
+                                <span class="card-title" id="nom" >{{videaste.name}} <i class="twa twa-{{videaste.flag}}-flag"></i></span>
+                                <p>"{{videaste.description}}"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="modal-background"></div>
+        <div id="modal-content" class="animated zoomIn">
+            <button id="modal-close">Fermer</button>
+            <div class="row">
+                <div class="col s12">
+
+                    <img class="modal_youtuber_avatar valign center" src="./images/warning.png" style="margin-top: 15px;"></img>
+                    <div class="nom"></div>
+
+                    
+                    <div class="ow_pc_rank" style="display: flex;">  
+                        <p>Rang sur Overwatch sur PC : </p>
+                        <div class="preloader-wrapper small active" ng-hide="ow_pc_rank != null" style="margin-left: 10px;">
+                            <div class="spinner-layer spinner-green-only">
+                                <div class="circle-clipper left">
+                                    <div class="circle"></div>
+                                </div><div class="gap-patch">
+                                        <div class="circle"></div>
+                                </div><div class="circle-clipper right">
+                                <div class="circle"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <p ng-show="ow_pc_rank_cote != null" class="overwatch_rank animated zoomIn" style="font-size: 25px;margin-left: 10px;margin-top: 5px;"> {{ow_pc_rank_cote}} </p>
+                        <img ng-class="grade1" class="animated zoomIn" ng-show="ow_pc_rank_cote != null" ng-src="{{ow_pc_rank_grade}}" height="35px" style="margin-left: 5px;margin-top: 3px;"/>
+                    </div>
+
+                        
+                </div>
+            </div>
+        </div>
+
+  </div>
+  
+</div>
+

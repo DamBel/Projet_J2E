@@ -1,0 +1,38 @@
+[
+	{
+		"update_id": "1", 
+		"version": "0.1.0",
+		"description": "VERSION ALPHA 0.1.0",
+		"date": "2017-03-22",
+		"imgPath": "",
+		"details": [
+			{"title": "Ecrire un statut", "type": "add_circle", "imgPath": "", "content": "Ajout d'une fonctionnalité permettant de poster un statut."},
+			{"title": "Recherche d'utilisateur", "type": "add_circle", "imgPath": "", "content": "Ajout d'une fonctionnalité permettant de rechercher un utilisateur."},
+			{"title": "Liste d'abonnements", "type": "add_circle", "imgPath": "", "content": "Ajout d'une fonctionnalité permettant de lister vos abonnements."},
+			{"title": "Follow / Unfollow", "type": "add_circle", "imgPath": "", "content": "Ajout d'une fonctionnalité permettant de s'abonner ou de se désabonner à un utilisateur."},
+			{"title": "Page 'Feed'", "type": "add_circle", "imgPath": "", "content": "Ajout d'un fil d'actualité avec vos publications ainsi que celles de chaque utilisateur auquel vous êtes abonné."},
+			{"title": "UX Design", "type": "build", "imgPath": "", "content": "Ajustements au niveau design."}
+    	],
+		"done": 1,
+		"new": false
+	},
+
+	{
+		"update_id": "2", 
+		"version": "0.1.1",
+		"description": "VERSION ALPHA 0.1.1",
+		"date": "2017-03-26",
+		"imgPath": "",
+		"details": [
+			{"title": "Barre de navigation mobile", "type": "bug_report", "imgPath": "", "content": "Auparavant, la barre de navigation mobile ne marchait pas correctement du premier coup, dorénavant il marche à coup sûr."},
+			{"title": "Boutons connexion / inscription", "type": "build", "imgPath": "", "content": "Dorénavant, les boutons de connexion et d'inscription ne s'afficheront plus sur la page d'accueil si un utilisateur est connecté."},
+			{"title": "Recherche d'utilisateur / Liste d'abonnements", "type": "build", "imgPath": "", "content": "Dorénavant, la liste d'abonnements et la liste de résultats se synchronisent entre elles lorsqu'une action est effectuée. Il est possible de se désabonner à un utilisateur depuis la liste des résultats de la recherche."},
+			{"title": "Page 'Mises à jour'", "type": "add_circle", "imgPath": "", "content": "Ajout d'une nouvelle page avec les détails des mises à jours de l'application."},
+			{"title": "Statuts dépassant la largeur du champ", "type": "bug_report", "imgPath": "", "content": "Dorénavant, les statuts ne seront plus concernés par les problèmes de débordement de contenu."}
+    	],
+		"done": 1,
+		"new": true
+	}
+
+	
+]

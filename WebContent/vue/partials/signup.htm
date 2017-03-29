@@ -1,0 +1,99 @@
+<div class="row" style="margin-bottom: inherit;">
+  <div ng-include="'partials/menu-fixed.htm'"></div>
+  
+
+  <div class="content" style="margin-top:-20px;">
+
+      <div ng-include="'partials/navigation.htm'"></div>
+      <script src="js/ui-materialize.js"></script>
+
+      <div class="signup">
+
+          <div class="parallax-container valign-wrapper">
+              <div class="parallax"><img src="images/giphy2.gif"></img></div>
+              <div class="banniere valign-wrapper">
+              </div>
+
+              <div class="row valign-demo valign center formulaire" style="background-color: white;padding-left: 20px;padding-right: 20px;padding-top: 30px;padding-bottom: 30px; margin-top:60px;">
+                  <h5 class="valign">Inscription</h5>
+              <form class="col s12">
+                  <div class="row">
+                      <div class="input-field col s12">
+                          <input id="email" type="email" class="validate" ng-model="email">
+                          <label for="email">Email</label>
+                      </div>
+                  </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                      <input id="pseudo" type="text" class="validate" ng-model="pseudo" maxlength="20">
+                      <label for="pseudo">Pseudonyme</label>
+                  </div>
+                </div>
+                  <p class="valign center" style="margin-bottom: 25px;">
+                    <input name="gender" type="radio" id="male" ng-model="gender" value="M"/>
+                    <label for="male" style="margin-right: 20px;">Homme</label>
+                    <input name="gender" type="radio" id="female" ng-model="gender" value="F"/>
+                    <label for="female">Femme</label>
+                  </p>
+
+                <div class="row">
+                  <label for="birthdate">Date de naissance</label>
+                  <input id="birthdate" type="datetime" class="datepicker validate" ng-model="birthdate">
+                </div>
+
+                <div class="input-field col s12 valign center">
+                  <select id="select" name="flag">
+                    <option value="france" data-icon="https://twemoji.maxcdn.com/2/svg/1f1eb-1f1f7.svg" class="left" >France</option>
+                    <option value="belgium" data-icon="https://twemoji.maxcdn.com/2/svg/1f1e7-1f1ea.svg" class="left">Belgique</option> 
+                    <option value="america-stars-and-stripes-united-united-states" data-icon="https://twemoji.maxcdn.com/2/svg/1f1fa-1f1f8.svg" class="left">USA</option>
+                    <option value="canada" data-icon="https://twemoji.maxcdn.com/2/svg/1f1e8-1f1e6.svg" class="left">Canada</option>
+                    <option value="britain-british-cornwall-england-great-britain-ireland-northern-ireland-scotland-uk-union-jack-united-united-kingdom-wales-flag" data-icon="https://twemoji.maxcdn.com/2/svg/1f1ec-1f1e7.svg" class="left">Royaume-Uni</option>
+                    <option value="korea-south-south-korea" data-icon="https://twemoji.maxcdn.com/2/svg/1f1f0-1f1f7.svg" class="left">Corée du Sud</option>
+                    <option value="japan" data-icon="https://twemoji.maxcdn.com/2/svg/1f1ef-1f1f5.svg" class="left">Japon</option>
+                    <option value="china" data-icon="https://twemoji.maxcdn.com/2/svg/1f1e8-1f1f3.svg" class="left">Chine</option>
+                    <option value="germany" data-icon="https://twemoji.maxcdn.com/2/svg/1f1e9-1f1ea.svg" class="left">Allemagne</option>
+                    <option value="spain" data-icon="https://twemoji.maxcdn.com/2/svg/1f1ea-1f1f8.svg" class="left">Espagne</option>
+                    <option value="italy" data-icon="https://twemoji.maxcdn.com/2/svg/1f1ee-1f1f9.svg" class="left">Italie</option>
+                    <option value="portugal" data-icon="https://twemoji.maxcdn.com/2/svg/1f1f5-1f1f9.svg" class="left">Portugal</option>
+                    <option value="russia" data-icon="https://twemoji.maxcdn.com/2/svg/1f1f7-1f1fa.svg" class="left">Russie</option>
+                    <option value="algeria" data-icon="https://twemoji.maxcdn.com/2/svg/1f1e9-1f1ff.svg" class="left">Algérie</option>
+                    <option value="tunisia" data-icon="https://twemoji.maxcdn.com/2/svg/1f1f9-1f1f3.svg" class="left">Tunisie</option>
+                    <option value="morocco" data-icon="https://twemoji.maxcdn.com/2/svg/1f1f2-1f1e6.svg" class="left">Maroc</option>
+                    <option value="netherlands" data-icon="https://twemoji.maxcdn.com/2/svg/1f1f3-1f1f1.svg" class="left">Pays-Bas</option>
+                  </select>
+                  <label class="valign center" style="width: 100%;">Choississez votre pays</label>
+                </div>
+
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="password" type="password" class="validate" ng-model="password">
+                    <label for="password">Mot de passe</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="password2" type="password" class="validate" ng-model="password2">
+                    <label for="password2">Confirmer le mot de passe</label>
+                  </div>
+                </div>
+
+                  <p class="hint valign center {{hint_status}}" ng-show="hint != null">
+                      <i class="material-icons" aria-hidden="true">{{hint_status}}</i>{{hint}}</p>
+
+                  <button class="btn waves-effect waves-light" type="submit" name="action" ng-click="inscrire()" style="margin-top: 15px;">S'inscrire
+                      <i class="material-icons right">send</i>
+                  </button>
+                
+              </form>
+            </div>
+
+          </div>
+
+      </div>
+
+
+
+  </div>
+  
+</div>
+
