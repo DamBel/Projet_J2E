@@ -70,12 +70,14 @@ public class Persistance implements IPersistance {
 	 */
 	public String login(String email, String password) throws SQLException{
 		
-		String query = this.login;
+		String query = new String(this.login);
 		
-		query.replaceAll(":email", email);
-		query.replaceAll(":password", password);
+		System.out.println("login=" + login);
 		
-		System.out.println(query);
+		query = query.replaceAll(":email", email);
+		query = query.replaceAll(":password", password);
+		
+		System.out.println("query=" + query);
 		
 		String json = JSONConverter.resultSetToJson(this.connexion, query);
 		
@@ -132,7 +134,7 @@ public class Persistance implements IPersistance {
 		
 		this.initEncodage = this.connexion.prepareStatement("SET NAMES utf8mb4");
 		
-		this.login = "SELECT user_id, pseudo, imgPath, flag, email, gender, password, birthdate FROM users WHERE email = :email AND password = :password";
+		this.login = "SELECT user_id, pseudo, imgPath, flag, email, gender, password, birthdate FROM users WHERE email = ':email' AND password = ':password'";
 		
 		this.newFeedPost = "INSERT INTO `post`(`user_id`, `adventure_id`, `publication_time`, `type`, `content`, `link`) VALUES (:user_id,NULL,:publication_time,0,:post_content,null)";
 		
