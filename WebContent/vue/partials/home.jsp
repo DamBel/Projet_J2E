@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <div class="row">
   <div ng-include="'partials/menu-fixed.htm'"></div>
 
@@ -54,7 +58,7 @@
                                 <div class="techno-card valign center">
                                     
                                     <a ng-click="redirectTo(tool.url)" url="{{tool.url}}" data-tooltip="{{tool.name}}"><img ng-src="{{tool.imgPath}}"></a>
-                                    <!--<p style="color:black; margin-top:10px;">{{tool.name}}</p>-->
+                                    
                                 </div>
                             </div>
 
@@ -107,10 +111,9 @@
 
         </div>
 
-
-
-
   </div>
   
+</div>
+
 </div>
 

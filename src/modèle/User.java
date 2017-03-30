@@ -2,10 +2,10 @@ package modèle;
 
 import java.sql.Date;
 
-public abstract class User {
+public class User {
 	
 	private String pseudo, firstName, lastName, imagePath, flag, email, password;
-	private char gender;
+	private String gender;
 	private Date birthdate;
 	private boolean banned, validation, admin;
 	
@@ -14,7 +14,7 @@ public abstract class User {
 	}
 
 	public User(String pseudo, String firstName, String lastName, String imagePath, String flag, String email,
-			String password, char gender, Date birthdate, boolean banned, boolean validation, boolean admin) {
+			String password, String gender, Date birthdate) {
 		super();
 		this.pseudo = pseudo;
 		this.firstName = firstName;
@@ -25,9 +25,9 @@ public abstract class User {
 		this.password = password;
 		this.gender = gender;
 		this.birthdate = birthdate;
-		this.banned = banned;
-		this.validation = validation;
-		this.admin = admin;
+		this.banned = false;
+		this.validation = true;
+		this.admin = false;
 	}
 
 	public String getPseudo() {
@@ -58,7 +58,7 @@ public abstract class User {
 		return password;
 	}
 
-	public char getGender() {
+	public String getGender() {
 		return gender;
 	}
 

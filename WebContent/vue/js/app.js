@@ -49,7 +49,7 @@ var disableTooltip = function(){
 };
 */
 
-var initYoutubers = function(){
+/*var initYoutubers = function(){
 
     init();
 
@@ -95,21 +95,23 @@ var initGames = function(){
     });
 
 };
+*/
 
 var ouvrir = function(){
     $('.button-collapse').sideNav();
 }
 
+/*
 var app = angular.module("TaverneApp", ["ngRoute"]);
 
 app.config(function($routeProvider) {
     $routeProvider
     .when("/", {
-        templateUrl : "partials/home.htm",
+        templateUrl : "partials/home.jsp",
         controller : "homeCtrl"
     })
     .when("/home", {
-        templateUrl : "partials/home.htm",
+        templateUrl : "partials/home.jsp",
         controller : "homeCtrl"
     })
     .when("/videastes", {
@@ -187,6 +189,7 @@ app.config(function($routeProvider) {
     });
 
 });
+*/
 
 app.run(function($rootScope, $location, $window) {
     $rootScope.disconnect = function() {
@@ -204,6 +207,7 @@ app.run(function($rootScope, $location, $window) {
     };
 });
 
+/*
 app.controller("homeCtrl", function($scope, $location, $http, $rootScope, $window) {
 
     init();
@@ -801,3 +805,4 @@ app.controller("ytCtrl", function($scope, $location, $http, $rootScope) {
     };
 
 });
+*/

@@ -3,7 +3,15 @@ package persistance;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import jdk.nashorn.internal.parser.JSONParser;
+import jdk.nashorn.internal.runtime.JSONListAdapter;
+import modèle.Tool;
+import modèle.User;
 
 public class Persistance implements IPersistance {
 	
@@ -53,6 +61,74 @@ public class Persistance implements IPersistance {
 		
 		this.initEncodage.execute();
 	}
+	
+	/**
+	 * Connecter un utilisateur au site
+	 * @throws SQLException 
+	 */
+	public User login(String email, String password) throws SQLException{
+		
+		/*
+		PreparedStatement getAllUsers = this.connexion.prepareStatement(""
+				+ "SELECT *"
+				+ "FROM users"
+				+ "WHERE email = ?");
+		*/
+		
+		PreparedStatement getUser = this.connexion.prepareStatement(""
+				+ "SELECT user_id, pseudo, imgPath, flag, email, gender, birthdate "
+				+ "FROM users "
+				+ "WHERE email = ?");
+		
+		getUser.setString(1, email);
+		
+		ResultSet userResult = getUser.executeQuery();
+		
+		if (userResult.next()){
+			User user = new User(
+					userResult.getString("pseudo"), 
+					userResult.getString("firstName"), 
+					userResult.getString("lastName"), 
+					userResult.getString("imagePath"), 
+					userResult.getString("flag"), 
+					userResult.getString("email"), 
+					userResult.getString("password"), 
+					userResult.getString("gender"), 
+					userResult.getDate("birthdate")
+					);		
+			
+			if (true){}
+			
+		}
+		
+		return null;
+		
+	}
+	
+	
+	public List<Tool> getTools() throws SQLException{
+		
+		ResultSet toolsResult = this.getTools.executeQuery();
+		
+		List<Tool> tools = new ArrayList<Tool>();
+		
+		while (toolsResult.next()){
+			
+			Tool tool = new Tool(toolsResult.getString("name"), 
+					toolsResult.getString("imgPath"), 
+					toolsResult.getString("url"));
+			
+			tools.add(tool);
+			
+		}
+		
+		return tools;
+		
+	}
+	
+	
+	
+	
 	
 	/**
 	 * Prépare les statements qui seront utilisés plus tard par le site
