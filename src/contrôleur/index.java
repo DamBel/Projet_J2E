@@ -79,6 +79,8 @@ public class index extends HttpServlet {
 					e1.printStackTrace();
 				} break;
 			
+			case "toto" : break;
+				
 			default : try {
 					this.afficherAccueil(request, response);
 				} catch (SQLException e) {
@@ -117,12 +119,7 @@ public class index extends HttpServlet {
 	
 	private void afficherAccueil(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 		
-		List<Tool> tools = null;
-		
-		request.setAttribute("tools", tools);
-		
-		request.getRequestDispatcher("").forward(request, response);
-		
+		response.sendRedirect("./vue/index.html#/");
 		
 	}
 		
