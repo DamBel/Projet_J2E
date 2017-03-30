@@ -30,7 +30,7 @@ public class Persistance implements IPersistance {
 	
 	//Statements
 	private PreparedStatement initEncodage;
-	private String newFeedPost, followUser, 
+	private String newFeedPost, followUser, getYoutubers,
 			unfollowUser, signUpUser, signUpCheck, getTools, lookForUser,
 			getPosts, getFeedPosts, getSubscriptions, login, getAllGames, getNewUsers;
 	
@@ -139,6 +139,15 @@ public class Persistance implements IPersistance {
 		
 	}
 	
+	
+	public String getYoutubers() throws SQLException{
+		
+		String json = JSONConverter.resultSetToJson(this.connexion, this.getYoutubers);
+		
+		return json;
+		
+	}
+	
 	/**
 	 * Prépare les statements qui seront utilisés plus tard par le site
 	 * @throws SQLException
@@ -180,7 +189,7 @@ public class Persistance implements IPersistance {
 		
 		this.getNewUsers = "SELECT pseudo, imgPath, flag FROM `users` WHERE 1 ORDER BY `user_id` DESC LIMIT 5;";
 		
-		
+		this.getYoutubers = "SELECT * FROM youtubers;";
 		
 		
 		
