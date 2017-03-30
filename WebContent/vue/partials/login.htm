@@ -10,18 +10,19 @@
         <div class="parallax"><img src="images/giphy2.gif"></img></div>
         <div class="banniere valign-wrapper">
         </div>
+
         <div class="row valign-demo valign center formulaire" style="background-color: white;padding-left: 20px;padding-right: 20px;padding-top: 30px;padding-bottom: 30px; margin-top:60px; max-width: 90vh; width:80%;">
             <h5 class="valign">Connexion</h5>
-        <form class="col s12" action="/vue/index.html#/" METHOD="POST">
+        <form class="col s12">
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="email" type="email" class="validate" name="email" ng-model="email">
+                    <input id="email" type="email" class="validate" ng-model="email">
                     <label for="email">Email</label>
                 </div>
             </div>
           <div class="row">
             <div class="input-field col s12">
-              <input id="password" type="password" class="validate" name="password" ng-model="password">
+              <input id="password" type="password" class="validate" ng-model="password">
               <label for="password">Mot de passe</label>
             </div>
           </div>
@@ -33,7 +34,7 @@
             </p>
         </div>
 
-            <button class="btn waves-effect waves-light" type="submit" name="action" value="connecter" style="margin-top: 15px;" ng-hide="hint_status == 'check_circle'">Se connecter
+            <button class="btn waves-effect waves-light" type="submit" name="action" ng-click="connecter()" style="margin-top: 15px;" ng-hide="hint_status == 'check_circle'">Se connecter
                 <i class="material-icons right">person</i>
             </button>
 

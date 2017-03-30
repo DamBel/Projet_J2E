@@ -42,7 +42,7 @@ angular.module("Taverne", [])
 
 	$http({
 	   method: 'GET',
-	   url: 'api/get.php'
+	   url: '../vue/index.html#/'
 	}).then(function (response) {
 	   // code to execute in case of success
 	   $scope.videastes = response.data;
@@ -50,17 +50,6 @@ angular.module("Taverne", [])
 	}, function (response) {
 	   // code to execute in case of error
 	   $scope.videastes = null;
-	});
-
-	$http({
-	   method: 'GET',
-	   url: 'api/tools.php'
-	}).then(function (response) {
-	   // code to execute in case of success
-	   $scope.tools = response.data;
-	}, function (response) {
-	   // code to execute in case of error
-	   $scope.tools = null;
 	});
 
 	$scope.count = 0;

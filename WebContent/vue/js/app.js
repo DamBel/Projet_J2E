@@ -34,7 +34,7 @@ var init = function(){
 
 };
 
-
+/*
 var initTooltip = function(){
     $(function(){
         $('.tooltipped').tooltip({delay: 50});
@@ -47,7 +47,7 @@ var disableTooltip = function(){
         $('.tooltipped').tooltip('remove');
     });
 };
-
+*/
 
 var initYoutubers = function(){
 
@@ -96,23 +96,20 @@ var initGames = function(){
 
 };
 
-
 var ouvrir = function(){
     $('.button-collapse').sideNav();
 }
 
-
 var app = angular.module("TaverneApp", ["ngRoute"]);
-
 
 app.config(function($routeProvider) {
     $routeProvider
     .when("/", {
-        templateUrl : "partials/home.jsp",
+        templateUrl : "partials/home.htm",
         controller : "homeCtrl"
     })
     .when("/home", {
-        templateUrl : "partials/home.jsp",
+        templateUrl : "partials/home.htm",
         controller : "homeCtrl"
     })
     .when("/videastes", {
@@ -191,7 +188,6 @@ app.config(function($routeProvider) {
 
 });
 
-
 app.run(function($rootScope, $location, $window) {
     $rootScope.disconnect = function() {
         $rootScope.user = null;
@@ -207,7 +203,6 @@ app.run(function($rootScope, $location, $window) {
         ouvrir();
     };
 });
-
 
 app.controller("homeCtrl", function($scope, $location, $http, $rootScope, $window) {
 
@@ -248,7 +243,6 @@ app.controller("homeCtrl", function($scope, $location, $http, $rootScope, $windo
 
 
 });
-
 
 app.controller("updatesCtrl", function($scope, $location, $http, $rootScope, $window) {
 
@@ -301,6 +295,7 @@ app.controller("loginCtrl", function($scope, $location, $http, $timeout, $rootSc
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             });
 
+            /* Check whether the HTTP Request is successful or not. */
             verification.success(function (data) {
 
                 //console.log(data);
@@ -369,6 +364,7 @@ app.controller("signupCtrl", function($scope, $location, $http, $timeout, $rootS
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             });
 
+            /* Check whether the HTTP Request is successful or not. */
             verification.success(function (data) {
 
                 console.log("Gender = " + $scope.gender);
