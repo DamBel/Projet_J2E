@@ -8,7 +8,7 @@ import modèle.User;
 
 public interface IPersistance {
 	
-	public List<Tool> getTools() throws SQLException;
+	public String getTools() throws SQLException;
 	
 	public User login(String email, String password) throws SQLException;
 

@@ -25,7 +25,7 @@ import java.util.Scanner;
 /**
  * Servlet implementation class index
  */
-@WebServlet("/vue/index.html#/")
+@WebServlet("/vue/index.html#")
 public class index extends HttpServlet {
 	
 	private IPersistance persistance;	
@@ -76,7 +76,13 @@ public class index extends HttpServlet {
 			switch(action){
 			
 			case "inscrire" : break;
-			case "connecter" : this.login(request, response);
+			case "connecter" : this.login(request, response); break;
+			case "tools" : try {
+					this.sendTools(request, response);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} break;
 			
 			default : try {
 					this.afficherAccueil(request, response);
@@ -95,6 +101,14 @@ public class index extends HttpServlet {
 		
 		String email = (String) request.getAttribute("email");
 		String password = (String) request.getAttribute("password");
+		
+	}
+	
+	private void sendTools(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+		
+		List<Tool> tools = this.persistance.getTools();
+		
+		
 		
 	}
 	

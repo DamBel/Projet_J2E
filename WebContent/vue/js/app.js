@@ -216,7 +216,7 @@ app.controller("homeCtrl", function($scope, $location, $http, $rootScope, $windo
 
     $http({
        method: 'GET',
-       url: 'api/taverne.php?action=tools'
+       url: '../vue/index.html#?action=tools'
     }).then(function (response) {
        // code to execute in case of success
        console.log(response.data);
@@ -229,7 +229,7 @@ app.controller("homeCtrl", function($scope, $location, $http, $rootScope, $windo
 
     $http({
        method: 'GET',
-       url: 'api/taverne.php?action=new_users'
+       url: '../vue/index.html#?action=new_users'
     }).then(function (response) {
        // code to execute in case of success
        console.log(response.data);

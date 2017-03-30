@@ -10,6 +10,7 @@ import java.util.List;
 
 import jdk.nashorn.internal.parser.JSONParser;
 import jdk.nashorn.internal.runtime.JSONListAdapter;
+import modèle.JSONConverter;
 import modèle.Tool;
 import modèle.User;
 
@@ -106,11 +107,17 @@ public class Persistance implements IPersistance {
 	}
 	
 	
-	public List<Tool> getTools() throws SQLException{
+	public String getTools() throws SQLException{
 		
 		ResultSet toolsResult = this.getTools.executeQuery();
 		
 		List<Tool> tools = new ArrayList<Tool>();
+		
+		String json = JSONConverter.resultSetToJson(this.connexion, "SELECT * FROM TOOLS");
+		
+		return json;
+		
+		/*String tmp = toolsResult.toString();
 		
 		while (toolsResult.next()){
 			
@@ -122,13 +129,9 @@ public class Persistance implements IPersistance {
 			
 		}
 		
-		return tools;
+		return tools;*/
 		
 	}
-	
-	
-	
-	
 	
 	/**
 	 * Prépare les statements qui seront utilisés plus tard par le site
