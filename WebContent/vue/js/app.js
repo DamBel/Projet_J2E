@@ -216,7 +216,7 @@ app.controller("homeCtrl", function($scope, $location, $http, $rootScope, $windo
 
     $http({
        method: 'GET',
-       url: '../vue/index.html#?action=tools'
+       url: '../control?action=tools'
     }).then(function (response) {
        // code to execute in case of success
        console.log(response.data);
@@ -229,7 +229,7 @@ app.controller("homeCtrl", function($scope, $location, $http, $rootScope, $windo
 
     $http({
        method: 'GET',
-       url: '../vue/index.html#?action=new_users'
+       url: '../control?action=new_users'
     }).then(function (response) {
        // code to execute in case of success
        console.log(response.data);

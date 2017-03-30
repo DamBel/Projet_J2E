@@ -25,7 +25,7 @@ import java.util.Scanner;
 /**
  * Servlet implementation class index
  */
-@WebServlet("/vue/index.html#")
+@WebServlet("/control")
 public class index extends HttpServlet {
 	
 	private IPersistance persistance;	
@@ -64,12 +64,7 @@ public class index extends HttpServlet {
 		System.out.println("opération = " + action);
 		
 		if (action == null){
-			try {
-				this.afficherAccueil(request, response);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			response.sendRedirect("./vue/index.html#/");
 		}
 		else{
 		
@@ -106,9 +101,9 @@ public class index extends HttpServlet {
 	
 	private void sendTools(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 		
-		List<Tool> tools = this.persistance.getTools();
+		String json = this.persistance.getTools();
 		
-		
+		response.getOutputStream().print(json);
 		
 	}
 	
@@ -122,7 +117,7 @@ public class index extends HttpServlet {
 	
 	private void afficherAccueil(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 		
-		List<Tool> tools = this.persistance.getTools();
+		List<Tool> tools = null;
 		
 		request.setAttribute("tools", tools);
 		
