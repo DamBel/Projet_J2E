@@ -68,42 +68,18 @@ public class Persistance implements IPersistance {
 	 * Connecter un utilisateur au site
 	 * @throws SQLException 
 	 */
-	public User login(String email, String password) throws SQLException{
+	public String login(String email, String password) throws SQLException{
 		
-		/*
-		PreparedStatement getAllUsers = this.connexion.prepareStatement(""
-				+ "SELECT *"
-				+ "FROM users"
-				+ "WHERE email = ?");
-		*/
+		String query = this.login;
 		
-		PreparedStatement getUser = this.connexion.prepareStatement(""
-				+ "SELECT user_id, pseudo, imgPath, flag, email, gender, birthdate "
-				+ "FROM users "
-				+ "WHERE email = ?");
+		query.replaceAll(":email", email);
+		query.replaceAll(":password", password);
 		
-		getUser.setString(1, email);
+		System.out.println(query);
 		
-		ResultSet userResult = getUser.executeQuery();
+		String json = JSONConverter.resultSetToJson(this.connexion, query);
 		
-		if (userResult.next()){
-			User user = new User(
-					userResult.getString("pseudo"), 
-					userResult.getString("firstName"), 
-					userResult.getString("lastName"), 
-					userResult.getString("imagePath"), 
-					userResult.getString("flag"), 
-					userResult.getString("email"), 
-					userResult.getString("password"), 
-					userResult.getString("gender"), 
-					userResult.getDate("birthdate")
-					);		
-			
-			if (true){}
-			
-		}
-		
-		return null;
+		return json;
 		
 	}
 	
@@ -155,6 +131,8 @@ public class Persistance implements IPersistance {
 	private void prepareStatements() throws SQLException{
 		
 		this.initEncodage = this.connexion.prepareStatement("SET NAMES utf8mb4");
+		
+		this.login = "SELECT user_id, pseudo, imgPath, flag, email, gender, password, birthdate FROM users WHERE email = :email AND password = :password";
 		
 		this.newFeedPost = "INSERT INTO `post`(`user_id`, `adventure_id`, `publication_time`, `type`, `content`, `link`) VALUES (:user_id,NULL,:publication_time,0,:post_content,null)";
 		
@@ -267,6 +245,41 @@ public class Persistance implements IPersistance {
 		this.connexion.close();
 		
 		super.finalize();
+	}
+
+	@Override
+	public String getAllGames() throws SQLException {
+		
+		String json = JSONConverter.resultSetToJson(this.connexion, this.getAllGames);
+		
+		return json;
+	}
+
+	@Override
+	public String getPosts() throws SQLException {
+		
+		String json = JSONConverter.resultSetToJson(this.connexion, this.getPosts);
+		
+		return json;
+		
+	}
+
+	@Override
+	public String getFeedPosts(String follower_id) throws SQLException {
+		
+		String query = this.getFeedPosts;
+		
+		query.replaceAll(":follower_id", follower_id);
+		
+		String json = JSONConverter.resultSetToJson(this.connexion, query);
+		
+		return json;
+		
+	}
+
+	@Override
+	public String getSubscriptions() throws SQLException {
+		return null;
 	}
 
 }

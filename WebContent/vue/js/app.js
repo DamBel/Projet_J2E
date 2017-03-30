@@ -286,8 +286,8 @@ app.controller("loginCtrl", function($scope, $location, $http, $timeout, $rootSc
         }
         else {
             var verification = $http({
-                method: "post",
-                url: 'api/taverne.php?action=login',
+                method: "get",
+                url: '../control?action=login&email='+$scope.email+'&password='+$scope.password,
                 data: {
                     email: $scope.email,
                     password: $scope.password
@@ -357,7 +357,7 @@ app.controller("signupCtrl", function($scope, $location, $http, $timeout, $rootS
         else {
             var verification = $http({
                 method: "post",
-                url: 'api/taverne.php?action=signup_check',
+                url: '../control?action=signup_check',
                 data: {
                     email: $scope.email
                 },
@@ -398,7 +398,7 @@ app.controller("signupCtrl", function($scope, $location, $http, $timeout, $rootS
 
                                 var enregistrement = $http({
                                     method: "post",
-                                    url: 'api/taverne.php?action=signup_user',
+                                    url: '../control?action=signup_user',
                                     data: {
                                         email: $scope.email,
                                         pseudo: $scope.pseudo,
@@ -448,7 +448,7 @@ app.controller("subsCtrl", function($scope, $location, $http, $rootScope, $timeo
 
     var subs_list = $http({
        method: 'post',
-       url: 'api/taverne.php?action=subscriptions',
+       url: '../control?action=subscriptions',
        data: {
             follower_id: $rootScope.user.user_id
         },
@@ -489,7 +489,7 @@ app.controller("subsCtrl", function($scope, $location, $http, $rootScope, $timeo
 
         var insertFollower = $http({
             method: "post",
-            url: 'api/taverne.php?action=follow_user',
+            url: '../control?action=follow_user',
             data: {
                 follower_id: $rootScope.user.user_id,
                 followed_id: followed_id
@@ -529,7 +529,7 @@ app.controller("subsCtrl", function($scope, $location, $http, $rootScope, $timeo
 
         var unfollow = $http({
             method: "post",
-            url: 'api/taverne.php?action=unfollow_user',
+            url: '../control?action=unfollow_user',
             data: {
                 follower_id: $rootScope.user.user_id,
                 followed_id: followed_id
@@ -560,7 +560,7 @@ app.controller("subsCtrl", function($scope, $location, $http, $rootScope, $timeo
 
             var recherche = $http({
                 method: "post",
-                url: 'api/taverne.php?action=recherche_user',
+                url: '../control?action=recherche_user',
                 data: {
                     user_id: $rootScope.user.user_id,
                     pseudo_search: $scope.pseudo_search
@@ -620,7 +620,7 @@ app.controller("feedCtrl", function($scope, $location, $http, $rootScope, $timeo
 
     var feed_posts = $http({
         method: "post",
-        url: 'api/taverne.php?action=feed_posts',
+        url: '../control?action=feed_posts',
         data: {
             follower_id: $rootScope.user.user_id,
         },
@@ -652,7 +652,7 @@ app.controller("feedCtrl", function($scope, $location, $http, $rootScope, $timeo
 
             var envoiStatut = $http({
                 method: "post",
-                url: 'api/taverne.php?action=new_feed_post',
+                url: '../control?action=new_feed_post',
                 data: {
                     user_id: $rootScope.user.user_id,
                     //content: document.getElementById('twemoji-picker').value,
@@ -675,7 +675,7 @@ app.controller("feedCtrl", function($scope, $location, $http, $rootScope, $timeo
 
                 var feed_posts = $http({
                     method: "post",
-                    url: 'api/taverne.php?action=feed_posts',
+                    url: '../control?action=feed_posts',
                     data: {
                         follower_id: $rootScope.user.user_id,
                     },
@@ -704,7 +704,7 @@ app.controller("gamesCtrl", function($scope, $location, $http, $rootScope) {
 
     $http({
        method: 'GET',
-       url: 'api/taverne.php?action=all_games'
+       url: '../control?action=all_games'
     }).then(function (response) {
        // code to execute in case of success
        $scope.games = response.data;
@@ -725,7 +725,7 @@ app.controller("ytCtrl", function($scope, $location, $http, $rootScope) {
 
     $http({
        method: 'GET',
-       url: 'api/get.php'
+       url: '../control?action=youtubers'
     }).then(function (response) {
        // code to execute in case of success
        $scope.videastes = response.data;

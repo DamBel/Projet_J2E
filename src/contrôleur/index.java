@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URLEncoder;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.ServletConfig;
@@ -77,10 +78,22 @@ public class index extends HttpServlet {
 					e2.printStackTrace();
 				} break;
 				
-			case "connecter" : this.login(request, response); break;
+			case "login" : try {
+					this.login(request, response);
+				} catch (SQLException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				} break;
 			
 			case "tools" : try {
 					this.sendTools(request, response);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} break;
+				
+			case "youtubers" : try {
+					this.sendYoutubers(request, response);
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -99,10 +112,16 @@ public class index extends HttpServlet {
 	}
 	
 	
-	private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 		
-		String email = (String) request.getAttribute("email");
-		String password = (String) request.getAttribute("password");
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		
+		System.out.println("email + mdp = " + email + " --- " + password);
+		
+		String json = this.persistance.login(email, password);
+		
+		response.getOutputStream().print(json);
 		
 	}
 	
@@ -131,6 +150,14 @@ public class index extends HttpServlet {
 	private void sendNewUsers(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 		
 		String json = this.persistance.getNewUsers();
+		
+		response.getOutputStream().print(json);
+		
+	}
+	
+	private void sendYoutubers(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+		
+		String json = this.persistance.getYoutubers();
 		
 		response.getOutputStream().print(json);
 		
