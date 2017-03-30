@@ -11,5 +11,7 @@ public interface IPersistance {
 	public String getTools() throws SQLException;
 	
 	public User login(String email, String password) throws SQLException;
+	
+	public String getNewUsers() throws SQLException;
 
 }

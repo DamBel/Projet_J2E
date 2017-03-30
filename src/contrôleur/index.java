@@ -70,16 +70,21 @@ public class index extends HttpServlet {
 		
 			switch(action){
 			
-			case "inscrire" : break;
+			case "new_users" : try {
+					this.sendNewUsers(request, response);
+				} catch (SQLException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				} break;
+				
 			case "connecter" : this.login(request, response); break;
+			
 			case "tools" : try {
 					this.sendTools(request, response);
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} break;
-			
-			case "toto" : break;
 				
 			default : try {
 					this.afficherAccueil(request, response);
@@ -120,6 +125,14 @@ public class index extends HttpServlet {
 	private void afficherAccueil(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 		
 		response.sendRedirect("./vue/index.html#/");
+		
+	}
+	
+	private void sendNewUsers(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+		
+		String json = this.persistance.getNewUsers();
+		
+		response.getOutputStream().print(json);
 		
 	}
 		

@@ -130,6 +130,15 @@ public class Persistance implements IPersistance {
 		
 	}
 	
+	
+	public String getNewUsers() throws SQLException{
+		
+		String json = JSONConverter.resultSetToJson(this.connexion, this.getNewUsers);
+		
+		return json;
+		
+	}
+	
 	/**
 	 * Prépare les statements qui seront utilisés plus tard par le site
 	 * @throws SQLException
