@@ -356,8 +356,8 @@ app.controller("signupCtrl", function($scope, $location, $http, $timeout, $rootS
         }
         else {
             var verification = $http({
-                method: "post",
-                url: '../control?action=signup_check',
+                method: "get",
+                url: '../control?action=signup_check&email='+$scope.email,
                 data: {
                     email: $scope.email
                 },
@@ -397,8 +397,8 @@ app.controller("signupCtrl", function($scope, $location, $http, $timeout, $rootS
                                 //console.log("Pays = " + $scope.flag);
 
                                 var enregistrement = $http({
-                                    method: "post",
-                                    url: '../control?action=signup_user',
+                                    method: "get",
+                                    url: '../control?action=signup_user&email='+$scope.email+'&pseudo='+$scope.pseudo+'&password='+$scope.password+'&gender='+$scope.gender+'&birthdate='+$scope.birthdate+'&flag='+$scope.flag,
                                     data: {
                                         email: $scope.email,
                                         pseudo: $scope.pseudo,
@@ -619,8 +619,8 @@ app.controller("feedCtrl", function($scope, $location, $http, $rootScope, $timeo
     };
 
     var feed_posts = $http({
-        method: "post",
-        url: '../control?action=feed_posts',
+        method: "get",
+        url: '../control?action=feed_posts&follower_id='+$rootScope.user.user_id,
         data: {
             follower_id: $rootScope.user.user_id,
         },
@@ -651,8 +651,8 @@ app.controller("feedCtrl", function($scope, $location, $http, $rootScope, $timeo
         else {
 
             var envoiStatut = $http({
-                method: "post",
-                url: '../control?action=new_feed_post',
+                method: "get",
+                url: '../control?action=new_feed_post&user_id='+$rootScope.user.user_id+'&time='+$scope.publication_time+'&content='+$scope.post_content,
                 data: {
                     user_id: $rootScope.user.user_id,
                     //content: document.getElementById('twemoji-picker').value,
@@ -674,8 +674,8 @@ app.controller("feedCtrl", function($scope, $location, $http, $rootScope, $timeo
                 }, 1000); 
 
                 var feed_posts = $http({
-                    method: "post",
-                    url: '../control?action=feed_posts',
+                    method: "get",
+                    url: '../control?action=feed_posts&follower_id='+$rootScope.user.user_id,
                     data: {
                         follower_id: $rootScope.user.user_id,
                     },

@@ -99,6 +99,34 @@ public class index extends HttpServlet {
 					e1.printStackTrace();
 				} break;
 				
+			case "signup_user" : try {
+					this.signUpUser(request, response);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} break;
+				
+			case "signup_check" : try {
+					this.signUpCheck(request, response);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} break;
+				
+			case "feed_posts" : try {
+					this.showFeedPosts(request, response);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} break;
+				
+			case "new_feed_post" : try {
+					this.newFeedPost(request, response);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} break;
+				
 			default : try {
 					this.afficherAccueil(request, response);
 				} catch (SQLException e) {
@@ -117,13 +145,12 @@ public class index extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
-		System.out.println("email + mdp = " + email + " --- " + password);
-		
 		String json = this.persistance.login(email, password);
 		
 		response.getOutputStream().print(json);
 		
 	}
+	
 	
 	private void sendTools(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 		
@@ -133,13 +160,60 @@ public class index extends HttpServlet {
 		
 	}
 	
-	private void inscrireUtilisateur(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private void signUpCheck(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 		
-		String pseudo = (String) request.getAttribute("pseudo");
+		//String pseudo = request.getParameter("pseudo");
+		String email = request.getParameter("email");
 		
-		//User user = new User(pseudo, firstName, lastName, imagePath, flag, email, password, gender, birthdate, banned, validation, admin)
+		System.out.println("email=" + email);
+		
+		String json = this.persistance.signUpCheck(email);
+				
+		response.getOutputStream().print(json);
 		
 	}
+	
+	private void signUpUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+		
+		String pseudo = request.getParameter("pseudo");
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		String birthdate = request.getParameter("birthdate");
+		String gender = request.getParameter("gender");
+		String flag = request.getParameter("flag");
+		
+		String json = this.persistance.signUpUser(pseudo, flag, email, password, gender, birthdate);
+		
+		response.getOutputStream().print(json);
+		
+	}
+	
+	private void showFeedPosts(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+		
+		String follower_id = request.getParameter("follower_id");
+		
+		String json = this.persistance.getFeedPosts(follower_id);
+		
+		response.getOutputStream().print(json);
+		
+	}
+	
+	private void newFeedPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+		
+		String user_id = request.getParameter("user_id");
+		String content = request.getParameter("content");
+		String publication_time = request.getParameter("time");
+		
+		System.out.println(publication_time);
+		System.out.println(content);
+		
+		String json = this.persistance.newFeedPost(user_id, publication_time, content);
+		
+		response.getOutputStream().print(json);
+		
+	}	
+	
+	
 	
 	private void afficherAccueil(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 		

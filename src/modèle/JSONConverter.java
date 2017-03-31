@@ -21,5 +21,18 @@ public class JSONConverter {
         } 
         return new Gson().toJson(listOfMaps);
     }
+	
+	public static String insertResultSetToJson(Connection connection, String query) {
 
+        List<Map<String, Object>> listOfMaps = null;
+        try {
+            QueryRunner queryRunner = new QueryRunner();
+            listOfMaps = queryRunner.insert(connection, query, new MapListHandler());
+        } catch (SQLException se) {
+            throw new RuntimeException("Couldn't query the database.", se);
+        } 
+        return new Gson().toJson(listOfMaps);		
+		
+	}
+	
 }
