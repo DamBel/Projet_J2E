@@ -126,7 +126,7 @@ INSERT INTO `tools` (`id`, `name`, `imgPath`, `url`) VALUES
 (2, 'AngularJS', 'images/tools/angular.png', 'https://angular.io/'),
 (3, 'JQuery', 'images/tools/jquery.png', 'https://jquery.com/'),
 (4, 'Materialize CSS', 'images/tools/materialize.png', 'http://materializecss.com/'),
-(5, 'PHP', 'images/tools/php.png', 'https://php.net/'),
+(5, 'Java', 'images/tools/j2ee.png', 'https://fr.wikipedia.org/wiki/Java_EE'),
 (6, 'MySQL', 'images/tools/mysql.png', 'https://www.mysql.com/');
 
 -- --------------------------------------------------------
