@@ -201,7 +201,7 @@ public class Persistance implements IPersistance {
 		query = query.replaceAll(":follower_id", follower_id);
 		query = query.replaceAll(":followed_id", followed_id);
 		
-		String json = JSONConverter.updateOrDeleteResultSetToJson(this.connexion, query);
+		String json = JSONConverter.insertResultSetToJson(this.connexion, query);
 		
 		return json;
 		
