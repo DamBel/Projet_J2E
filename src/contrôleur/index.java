@@ -127,6 +127,34 @@ public class index extends HttpServlet {
 					e1.printStackTrace();
 				} break;
 				
+			case "recherche_user" : try {
+					this.searchUser(request, response);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} break;
+				
+			case "subscriptions" : try {
+					this.subscribe(request, response);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} break;
+				
+			case "follow_user" : try {
+					this.followUser(request, response);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} break;
+				
+			case "unfollow_user" : try {
+					this.unfollowUser(request, response);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} break;
+				
 			default : try {
 					this.afficherAccueil(request, response);
 				} catch (SQLException e) {
@@ -208,6 +236,66 @@ public class index extends HttpServlet {
 		System.out.println(content);
 		
 		String json = this.persistance.newFeedPost(user_id, publication_time, content);
+		
+		response.getOutputStream().print(json);
+		
+	}	
+	
+	private void subscribe(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+		
+		String user_id = request.getParameter("user_id");
+		
+		System.out.println("user_id=" + user_id);
+		
+		if (user_id != null){
+			String json = this.persistance.getSubscriptions(user_id);
+			
+			if (json.contains(user_id)){
+				response.getOutputStream().print("");	
+			} else{
+				response.getOutputStream().print(json);
+			}
+			
+		} else {
+			response.getOutputStream().print("");
+		}
+		
+	}		
+	
+	
+	private void followUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+		
+		String follower = request.getParameter("follower_id");
+		String followed = request.getParameter("followed_id");
+		
+		String json = this.persistance.followUser(follower, followed);
+		
+		response.getOutputStream().print(json);
+		
+	}	
+	
+	
+	private void unfollowUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+		
+		String follower = request.getParameter("follower_id");
+		String followed = request.getParameter("followed_id");
+		
+		String json = this.persistance.unfollowUser(follower, followed);
+		
+		response.getOutputStream().print(json);
+		
+	}	
+	
+	
+	private void searchUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+		
+		String user_id = request.getParameter("user_id");
+		String pseudo = request.getParameter("pseudo_search");
+		
+		System.out.println("user_id=" + user_id);
+		System.out.println("pseudo=" + pseudo);
+		
+		String json = this.persistance.lookForUsers(pseudo);
 		
 		response.getOutputStream().print(json);
 		

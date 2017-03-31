@@ -29,7 +29,13 @@ public interface IPersistance {
 	
 	public String newFeedPost(String user_id, String publication_time, String post_content);
 	
-	public String getSubscriptions();
+	public String getSubscriptions(String follower_id);
+	
+	public String lookForUsers(String pseudo);
+	
+	public String followUser(String follower_id, String followed_id);
+
+	public String unfollowUser(String follower_id, String followed_id);
 	
 	
 }

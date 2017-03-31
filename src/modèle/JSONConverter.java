@@ -35,4 +35,17 @@ public class JSONConverter {
 		
 	}
 	
+	public static String updateOrDeleteResultSetToJson(Connection connection, String query) {
+
+        Object listOfMaps = null;
+        try {
+            QueryRunner queryRunner = new QueryRunner();
+            listOfMaps = queryRunner.update(connection, query, new MapListHandler());
+        } catch (SQLException se) {
+            throw new RuntimeException("Couldn't query the database.", se);
+        } 
+        return new Gson().toJson(listOfMaps);		
+		
+	}
+	
 }

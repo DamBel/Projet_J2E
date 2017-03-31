@@ -447,8 +447,8 @@ app.controller("subsCtrl", function($scope, $location, $http, $rootScope, $timeo
     console.log("Form1 = " + $scope.form1);
 
     var subs_list = $http({
-       method: 'post',
-       url: '../control?action=subscriptions',
+       method: 'get',
+       url: '../control?action=subscriptions&user_id='+$rootScope.user.user_id,
        data: {
             follower_id: $rootScope.user.user_id
         },
@@ -488,8 +488,8 @@ app.controller("subsCtrl", function($scope, $location, $http, $rootScope, $timeo
         console.log("ID de la personne suivie" + followed_id);
 
         var insertFollower = $http({
-            method: "post",
-            url: '../control?action=follow_user',
+            method: "get",
+            url: '../control?action=follow_user&follower_id='+$rootScope.user.user_id+'&followed_id='+followed_id,
             data: {
                 follower_id: $rootScope.user.user_id,
                 followed_id: followed_id
@@ -528,8 +528,8 @@ app.controller("subsCtrl", function($scope, $location, $http, $rootScope, $timeo
     $scope.unfollow_user = function unfollow_user(followed_id) {
 
         var unfollow = $http({
-            method: "post",
-            url: '../control?action=unfollow_user',
+            method: "get",
+            url: '../control?action=unfollow_user&follower_id='+$rootScope.user.user_id+'&followed_id='+followed_id,
             data: {
                 follower_id: $rootScope.user.user_id,
                 followed_id: followed_id
@@ -559,8 +559,8 @@ app.controller("subsCtrl", function($scope, $location, $http, $rootScope, $timeo
         else {
 
             var recherche = $http({
-                method: "post",
-                url: '../control?action=recherche_user',
+                method: "get",
+                url: '../control?action=recherche_user&user_id='+$rootScope.user.user_id+"&pseudo_search="+$scope.pseudo_search,
                 data: {
                     user_id: $rootScope.user.user_id,
                     pseudo_search: $scope.pseudo_search
@@ -663,7 +663,7 @@ app.controller("feedCtrl", function($scope, $location, $http, $rootScope, $timeo
             });
 
             envoiStatut.success(function (data) {
-                $scope.hint = data;
+                $scope.hint = "Publié!";
                 $scope.hint_status = "check_circle";
                 $scope.post_content = '';
 
