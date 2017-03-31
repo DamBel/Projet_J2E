@@ -2,6 +2,11 @@ package modèle;
 
 import java.sql.Date;
 
+/**
+ * Classe qui sera utilisée pour une future mise à jour du site
+ * @author Damien
+ *
+ */
 public class Game {
 	
 	private String name, imgPath;

@@ -2,6 +2,13 @@ package modèle;
 
 import java.sql.Date;
 
+/**
+ * Classe utilisé pour représenter les utilisateurs
+ * 
+ * @deprecated Suite au passage à angular, l'utilisation de cette classe n'est plus utile
+ * @see ./WebContent/vue/js/app.js
+ * @author Damien & Tom
+ */
 public class User {
 	
 	private String pseudo, firstName, lastName, imagePath, flag, email, password;

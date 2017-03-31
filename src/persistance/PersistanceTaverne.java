@@ -4,10 +4,15 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import modèle.JSONConverter;
 
-public class Persistance implements IPersistance {
-	
+/**
+ * S'occupe de la connexion à la base de données et du paramétrage des requêtes
+ * qui seront ensuite utilisé par JSONConverter.java
+ * 
+ * @author Damien & Tom
+ * @see persistance/IPersistance.java, persistance/JSONConverter.java
+ */
+public class PersistanceTaverne implements IPersistance {
 	
 	//Coordonnées pour la base
 	private final String BASE = "mysql";
@@ -27,11 +32,11 @@ public class Persistance implements IPersistance {
 			getPosts, getFeedPosts, getSubscriptions, login, getAllGames, getNewUsers;
 	
 	/**
-	 * Permet de se connecter à une base de donn�es existante
+	 * Permet de se connecter à une base de données existante
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
-	public Persistance() throws SQLException, ClassNotFoundException{
+	public PersistanceTaverne() throws SQLException, ClassNotFoundException{
 		
 		switch(this.BASE){
 		
@@ -57,6 +62,7 @@ public class Persistance implements IPersistance {
 	}
 	
 
+	@Override
 	public String signUpUser(String pseudo, String flag, String email, String password, String gender, String birthdate){
 		
 		String query = new String(this.signUpUser);
@@ -72,7 +78,7 @@ public class Persistance implements IPersistance {
 		
 		System.out.println("query=" + query);
 		
-		String json = JSONConverter.insertResultSetToJson(this.connexion, query);
+		String json = JSONConverter.insertOrDeleteResultSetToJson(this.connexion, query);
 		
 		return json;
 		
@@ -108,7 +114,7 @@ public class Persistance implements IPersistance {
 		
 	}
 	
-	
+
 	public String getTools(){
 		
 		String json = JSONConverter.resultSetToJson(this.connexion, this.getTools);
@@ -135,7 +141,6 @@ public class Persistance implements IPersistance {
 		
 	}
 	
-	@Override
 	public String getAllGames() {
 		
 		String json = JSONConverter.resultSetToJson(this.connexion, this.getAllGames);
@@ -143,7 +148,7 @@ public class Persistance implements IPersistance {
 		return json;
 	}
 
-	@Override
+	
 	public String getPosts() {
 		
 		String json = JSONConverter.resultSetToJson(this.connexion, this.getPosts);
@@ -187,7 +192,7 @@ public class Persistance implements IPersistance {
 		query = query.replaceAll(":follower_id", follower_id);
 		query = query.replaceAll(":followed_id", followed_id);
 		
-		String json = JSONConverter.insertResultSetToJson(this.connexion, query);
+		String json = JSONConverter.insertOrDeleteResultSetToJson(this.connexion, query);
 		
 		return json;
 		
@@ -200,7 +205,7 @@ public class Persistance implements IPersistance {
 		query = query.replaceAll(":follower_id", follower_id);
 		query = query.replaceAll(":followed_id", followed_id);
 		
-		String json = JSONConverter.insertResultSetToJson(this.connexion, query);
+		String json = JSONConverter.insertOrDeleteResultSetToJson(this.connexion, query);
 		
 		return json;
 		
@@ -217,7 +222,7 @@ public class Persistance implements IPersistance {
 		query = query.replaceAll(":time", publication_time);
 		query = query.replaceAll(":content", post_content);
 		
-		String json = JSONConverter.insertResultSetToJson(this.connexion, query);
+		String json = JSONConverter.insertOrDeleteResultSetToJson(this.connexion, query);
 		
 		return json;
 		
@@ -241,7 +246,7 @@ public class Persistance implements IPersistance {
 	
 	
 	/**
-	 * Pr�pare les statements qui seront utilis�s plus tard par le site
+	 * Pr�pare les statements qui seront utilisés plus tard par le site
 	 * @throws SQLException
 	 */
 	private void prepareStatements() throws SQLException{

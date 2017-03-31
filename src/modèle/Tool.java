@@ -1,5 +1,13 @@
 package modèle;
 
+/**
+ * Classe utilisé pour représenter les outils
+ * 
+ * @deprecated Suite au passage à angular, l'utilisation de cette classe n'est plus utile
+ * @see ./WebContent/vue/js/app.js
+ * 
+ * @author Damien
+ */
 public class Tool {
 	
 	private String name, imgPath, url;
