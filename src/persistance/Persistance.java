@@ -1,21 +1,20 @@
 package persistance;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import modèle.JSONConverter;
+import modÃ¨le.JSONConverter;
 
 public class Persistance implements IPersistance {
 	
 	
-	//Coordonnées pour la base
+	//CoordonnÃ©es pour la base
 	private final String BASE = "mysql";
 	
 	private final String URL_MYSQL = "jdbc:mysql://localhost:3306/taverne";
 	private final String URL_ORACLE = "jdbc:oracle:thin:@//Lenovo-PC:1521/XE";
-	private final String NOM_BDD = "taverne";
+	//private final String NOM_BDD = "taverne";
 	private String LOGIN = "root";
 	private final String PASSWORD = "root";
 	
@@ -28,7 +27,7 @@ public class Persistance implements IPersistance {
 			getPosts, getFeedPosts, getSubscriptions, login, getAllGames, getNewUsers;
 	
 	/**
-	 * Permet de se connecter à une base de données existante
+	 * Permet de se connecter Ã  une base de donnï¿½es existante
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
@@ -47,7 +46,7 @@ public class Persistance implements IPersistance {
 			break;
 		
 		
-		default : throw new SQLException("Erreur lors de la création de la base");
+		default : throw new SQLException("Erreur lors de la crï¿½ation de la base");
 	
 		}
 		
@@ -242,7 +241,7 @@ public class Persistance implements IPersistance {
 	
 	
 	/**
-	 * Prépare les statements qui seront utilisés plus tard par le site
+	 * Prï¿½pare les statements qui seront utilisï¿½s plus tard par le site
 	 * @throws SQLException
 	 */
 	private void prepareStatements() throws SQLException{
@@ -263,7 +262,7 @@ public class Persistance implements IPersistance {
 		
 		this.getTools = "SELECT * FROM tools;";
 		
-		this.lookForUser = "SELECT user_id, pseudo, imgPath, flag FROM `users` WHERE pseudo LIKE ':pseudo_search' LIMIT 20;"; //AND user_id != ':user_id' 
+		this.lookForUser = "SELECT user_id, pseudo, imgPath, flag FROM `users` WHERE pseudo LIKE '%:pseudo_search%' LIMIT 20;"; //AND user_id != ':user_id' 
 		
 		this.getPosts = "SELECT u.pseudo as pseudo, p.content as content, u.imgPath as imgPath, p.publication_time as publication_time, u.flag as flag FROM post p INNER JOIN users u ON p.user_id = u.user_id ORDER BY p.publication_time DESC LIMIT 10;";
 		

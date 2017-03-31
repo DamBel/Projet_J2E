@@ -1,12 +1,7 @@
-package contrôleur;
+package contrÃ´leur;
 
 import java.io.IOException;
-import java.net.URLEncoder;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.List;
-
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,12 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.eclipse.jdt.core.compiler.InvalidInputException;
 
-import modèle.Tool;
-import modèle.User;
 import persistance.IPersistance;
 import persistance.Persistance;
-
-import java.util.Scanner;
 
 /**
  * Servlet implementation class index
@@ -41,10 +32,7 @@ public class index extends HttpServlet {
      */
     public index() throws SQLException, ClassNotFoundException, InvalidInputException {
         super();
-        //Scanner scanner = new Scanner(System.in);
-        //String s = scanner.nextLine();
         this.persistance = new Persistance();
-        System.out.print("construct");
     }
 
 	/**
@@ -52,8 +40,7 @@ public class index extends HttpServlet {
 	 */
     
 	public void init(ServletConfig config) throws ServletException {
-		// TODO Auto-generated method stub
-		System.out.print("init");
+		
 	}
 
 	/**
@@ -62,7 +49,6 @@ public class index extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String action = request.getParameter("action");
-		System.out.println("opération = " + action);
 		
 		if (action == null){
 			response.sendRedirect("./vue/index.html#/");
@@ -74,91 +60,78 @@ public class index extends HttpServlet {
 			case "new_users" : try {
 					this.sendNewUsers(request, response);
 				} catch (SQLException e2) {
-					// TODO Auto-generated catch block
 					e2.printStackTrace();
 				} break;
 				
 			case "login" : try {
 					this.login(request, response);
 				} catch (SQLException e2) {
-					// TODO Auto-generated catch block
 					e2.printStackTrace();
 				} break;
 			
 			case "tools" : try {
 					this.sendTools(request, response);
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} break;
 				
 			case "youtubers" : try {
 					this.sendYoutubers(request, response);
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} break;
 				
 			case "signup_user" : try {
 					this.signUpUser(request, response);
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} break;
 				
 			case "signup_check" : try {
 					this.signUpCheck(request, response);
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} break;
 				
 			case "feed_posts" : try {
 					this.showFeedPosts(request, response);
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} break;
 				
 			case "new_feed_post" : try {
 					this.newFeedPost(request, response);
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} break;
 				
 			case "recherche_user" : try {
 					this.searchUser(request, response);
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} break;
 				
 			case "subscriptions" : try {
 					this.subscribe(request, response);
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} break;
 				
 			case "follow_user" : try {
 					this.followUser(request, response);
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} break;
 				
 			case "unfollow_user" : try {
 					this.unfollowUser(request, response);
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} break;
 				
 			default : try {
 					this.afficherAccueil(request, response);
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} break;
 			
@@ -190,10 +163,7 @@ public class index extends HttpServlet {
 	
 	private void signUpCheck(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 		
-		//String pseudo = request.getParameter("pseudo");
 		String email = request.getParameter("email");
-		
-		System.out.println("email=" + email);
 		
 		String json = this.persistance.signUpCheck(email);
 				
@@ -232,9 +202,6 @@ public class index extends HttpServlet {
 		String content = request.getParameter("content");
 		String publication_time = request.getParameter("time");
 		
-		System.out.println(publication_time);
-		System.out.println(content);
-		
 		String json = this.persistance.newFeedPost(user_id, publication_time, content);
 		
 		response.getOutputStream().print(json);
@@ -244,8 +211,6 @@ public class index extends HttpServlet {
 	private void subscribe(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 		
 		String user_id = request.getParameter("user_id");
-		
-		System.out.println("user_id=" + user_id);
 		
 		if (user_id != null){
 			String json = this.persistance.getSubscriptions(user_id);
@@ -289,11 +254,7 @@ public class index extends HttpServlet {
 	
 	private void searchUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 		
-		String user_id = request.getParameter("user_id");
 		String pseudo = request.getParameter("pseudo_search");
-		
-		System.out.println("user_id=" + user_id);
-		System.out.println("pseudo=" + pseudo);
 		
 		String json = this.persistance.lookForUsers(pseudo);
 		

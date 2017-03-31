@@ -1,19 +1,12 @@
 package persistance;
 
-import java.sql.Date;
-import java.sql.SQLException;
-import java.util.List;
-
-import modèle.Tool;
-import modèle.User;
-
 public interface IPersistance {
 	
 	public String getTools();
 	
 	public String login(String email, String password);
 	
-	public String signUpUser(String pseudo, String flag, String email, String password, String gender, String birthdate) throws SQLException;
+	public String signUpUser(String pseudo, String flag, String email, String password, String gender, String birthdate);
 	
 	public String signUpCheck(String email);
 	

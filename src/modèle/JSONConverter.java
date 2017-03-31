@@ -1,4 +1,4 @@
-package modèle;
+package modÃ¨le;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -28,19 +28,6 @@ public class JSONConverter {
         try {
             QueryRunner queryRunner = new QueryRunner();
             listOfMaps = queryRunner.insert(connection, query, new MapListHandler());
-        } catch (SQLException se) {
-            throw new RuntimeException("Couldn't query the database.", se);
-        } 
-        return new Gson().toJson(listOfMaps);		
-		
-	}
-	
-	public static String updateOrDeleteResultSetToJson(Connection connection, String query) {
-
-        Object listOfMaps = null;
-        try {
-            QueryRunner queryRunner = new QueryRunner();
-            listOfMaps = queryRunner.update(connection, query, new MapListHandler());
         } catch (SQLException se) {
             throw new RuntimeException("Couldn't query the database.", se);
         } 
