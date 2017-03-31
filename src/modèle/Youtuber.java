@@ -2,6 +2,13 @@ package modèle;
 
 import java.sql.Date;
 
+/**
+ * Classe utilisé pour représenter les youtubers
+ * 
+ * @deprecated Suite au passage à angular, l'utilisation de cette classe n'est plus utile
+ * @see ./WebContent/vue/js/app.js
+ * @author Damien & Tom
+ */
 public class Youtuber extends User{
 	
 	private String description, urlOWPC;

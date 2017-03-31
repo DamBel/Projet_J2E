@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.eclipse.jdt.core.compiler.InvalidInputException;
 
 import persistance.IPersistance;
-import persistance.Persistance;
+import persistance.PersistanceTaverne;
 
 /**
  * Servlet implementation class index
@@ -32,7 +32,7 @@ public class index extends HttpServlet {
      */
     public index() throws SQLException, ClassNotFoundException, InvalidInputException {
         super();
-        this.persistance = new Persistance();
+        this.persistance = new PersistanceTaverne();
     }
 
 	/**
@@ -53,95 +53,57 @@ public class index extends HttpServlet {
 		if (action == null){
 			response.sendRedirect("./vue/index.html#/");
 		}
+		
 		else{
 		
+			/*
+			 * Contrôleur principal, redirige vers les fonctions appropriées en fonction du contenu de la variable 'action'
+			 * qui se chargeront des transactions avec la base de données, avant d'envoyer le résultat sous format
+			 * JSON à angular pour l'affichage dynamique
+			 */
 			switch(action){
 			
-			case "new_users" : try {
-					this.sendNewUsers(request, response);
-				} catch (SQLException e2) {
-					e2.printStackTrace();
-				} break;
+			case "new_users" : this.sendNewUsers(request, response); break;
 				
-			case "login" : try {
-					this.login(request, response);
-				} catch (SQLException e2) {
-					e2.printStackTrace();
-				} break;
+			case "login" : this.login(request, response); break;
 			
-			case "tools" : try {
-					this.sendTools(request, response);
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				} break;
+			case "tools" : this.sendTools(request, response); break;
 				
-			case "youtubers" : try {
-					this.sendYoutubers(request, response);
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				} break;
+			case "youtubers" : this.sendYoutubers(request, response); break;
 				
-			case "signup_user" : try {
-					this.signUpUser(request, response);
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				} break;
+			case "signup_user" : this.signUpUser(request, response); break;
 				
-			case "signup_check" : try {
-					this.signUpCheck(request, response);
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				} break;
+			case "signup_check" : this.signUpCheck(request, response); break;
 				
-			case "feed_posts" : try {
-					this.showFeedPosts(request, response);
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				} break;
+			case "feed_posts" : this.showFeedPosts(request, response); break;
 				
-			case "new_feed_post" : try {
-					this.newFeedPost(request, response);
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				} break;
+			case "new_feed_post" : this.newFeedPost(request, response); break;
 				
-			case "recherche_user" : try {
-					this.searchUser(request, response);
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				} break;
+			case "recherche_user" : this.searchUser(request, response); break;
 				
-			case "subscriptions" : try {
-					this.subscribe(request, response);
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				} break;
+			case "subscriptions" : this.getSubscriptions(request, response); break;
 				
-			case "follow_user" : try {
-					this.followUser(request, response);
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				} break;
+			case "follow_user" : this.followUser(request, response); break;
 				
-			case "unfollow_user" : try {
-					this.unfollowUser(request, response);
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				} break;
+			case "unfollow_user" : this.unfollowUser(request, response); break;
 				
-			default : try {
-					this.afficherAccueil(request, response);
-				} catch (SQLException e) {
-					e.printStackTrace();
-				} break;
+			default : this.afficherAccueil(request, response); break;
 			
 			}
 		}
 		
 	}
 	
-	
-	private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+	/**
+	 * Gère la connexion des utilisateurs au site
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 * @throws SQLException
+	 */
+	private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
@@ -152,8 +114,16 @@ public class index extends HttpServlet {
 		
 	}
 	
-	
-	private void sendTools(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+	/**
+	 * Renvoie le contenu de la table 'tools' de la base de données
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 * @throws SQLException
+	 */
+	private void sendTools(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		
 		String json = this.persistance.getTools();
 		
@@ -161,7 +131,16 @@ public class index extends HttpServlet {
 		
 	}
 	
-	private void signUpCheck(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+	/**
+	 * Vérifie lors de l'inscription d'un nouvel utilisateur si l'email a déjà été utilisé
+	 * en recherchant dans la base de données
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	private void signUpCheck(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		
 		String email = request.getParameter("email");
 		
@@ -171,7 +150,15 @@ public class index extends HttpServlet {
 		
 	}
 	
-	private void signUpUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+	/**
+	 * Inscrit un nouvel utilisateur au site
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	private void signUpUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		
 		String pseudo = request.getParameter("pseudo");
 		String email = request.getParameter("email");
@@ -186,7 +173,15 @@ public class index extends HttpServlet {
 		
 	}
 	
-	private void showFeedPosts(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+	/**
+	 * Charge tous les posts relatifs aux abonnements de l'utilisateur
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	private void showFeedPosts(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		
 		String follower_id = request.getParameter("follower_id");
 		
@@ -196,7 +191,16 @@ public class index extends HttpServlet {
 		
 	}
 	
-	private void newFeedPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+	/**
+	 * Méthode appelée lors de la création d'un nouveau post. Le contenu de ce dernier est inséré
+	 * dans la base puis renvoie ensuite le résultat de la requête à angular
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	private void newFeedPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		
 		String user_id = request.getParameter("user_id");
 		String content = request.getParameter("content");
@@ -208,10 +212,19 @@ public class index extends HttpServlet {
 		
 	}	
 	
-	private void subscribe(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+	/**
+	 * Utilisée pour afficher les abonnements de l'utilisateur actuel
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	private void getSubscriptions(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		
 		String user_id = request.getParameter("user_id");
 		
+		//Si l'utilisateur a au moins un abonnement
 		if (user_id != null){
 			String json = this.persistance.getSubscriptions(user_id);
 			
@@ -227,8 +240,15 @@ public class index extends HttpServlet {
 		
 	}		
 	
-	
-	private void followUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+	/**
+	 * Utilisée pour ajouter un abonnement à un utilisateur
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	private void followUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		
 		String follower = request.getParameter("follower_id");
 		String followed = request.getParameter("followed_id");
@@ -239,8 +259,15 @@ public class index extends HttpServlet {
 		
 	}	
 	
-	
-	private void unfollowUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+	/**
+	 * Utilisée pour enlever des abonnements à un utilisateur
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	private void unfollowUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		
 		String follower = request.getParameter("follower_id");
 		String followed = request.getParameter("followed_id");
@@ -251,8 +278,15 @@ public class index extends HttpServlet {
 		
 	}	
 	
-	
-	private void searchUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+	/**
+	 * Utilisée pour rechercher un utilisateur par son pseudo
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	private void searchUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		
 		String pseudo = request.getParameter("pseudo_search");
 		
@@ -263,14 +297,29 @@ public class index extends HttpServlet {
 	}	
 	
 	
-	
-	private void afficherAccueil(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+	/**
+	 * Redirige vers la page d'accueil si le paramètre "action" est vide ou nul
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	private void afficherAccueil(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		
 		response.sendRedirect("./vue/index.html#/");
 		
 	}
 	
-	private void sendNewUsers(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+	/**
+	 * Affiche les cinq derniers utilisateurs inscrits au site
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	private void sendNewUsers(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		
 		String json = this.persistance.getNewUsers();
 		
@@ -278,7 +327,16 @@ public class index extends HttpServlet {
 		
 	}
 	
-	private void sendYoutubers(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+	
+	/**
+	 * Affiche les youtubers pour la page "Vidéastes"
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	private void sendYoutubers(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		
 		String json = this.persistance.getYoutubers();
 		
