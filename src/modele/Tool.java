@@ -1,4 +1,4 @@
-package modèle;
+package modele;
 
 /**
  * Classe utilisé pour représenter les outils

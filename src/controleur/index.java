@@ -1,4 +1,4 @@
-package contrôleur;
+package controleur;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -339,6 +339,8 @@ public class index extends HttpServlet {
 	private void sendYoutubers(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		
 		String json = this.persistance.getYoutubers();
+		
+		System.out.println(json.toString());
 		
 		response.getOutputStream().print(json);
 		

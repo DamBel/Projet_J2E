@@ -724,7 +724,7 @@ app.controller("ytCtrl", function($scope, $location, $http, $rootScope) {
     console.log($scope.loggedIn);
 
     $http({
-       method: 'GET',
+       method: 'get',
        url: '../control?action=youtubers'
     }).then(function (response) {
        // code to execute in case of success
@@ -757,7 +757,7 @@ app.controller("ytCtrl", function($scope, $location, $http, $rootScope) {
 
             $http({
                method: 'GET',
-               url: $scope.videastes[id_videaste].OW_PC
+               url: $scope.videastes[id_videaste+1].OW_PC
             }).then(function (response) {
                // code to execute in case of success
                console.log("Success.");
