@@ -78,7 +78,7 @@ INSERT INTO `games` (`game_id`, `name`, `releasedate`, `imgPath`) VALUES
 (20, 'Hearthstone', '2014-03-11', 'https://is4-ssl.mzstatic.com/image/thumb/Purple6/v4/f3/07/33/f30733e6-009f-2340-44ba-8161183ef122/mzl.fctprxwo.png/0x0ss-85.jpg'),
 (21, 'Star Wars: Battlefront', '2015-11-17', 'http://image.jeuxvideo.com/medias/144498/1444982838-1766-jaquette-avant.jpg'),
 (22, 'Pokemon Soleil et Lune', '2016-11-18', 'http://cdn.neurogadget.net/wp-content/uploads/2017/02/Pokemon-Sun-and-Moon-Pokemon.jpg'),
-(24, 'Resident Evil 7: Biohazard', '2017-01-24', 'http://images.techtimes.com/data/images/full/252477/resident-evil-7.jpg');
+(23, 'Resident Evil 7: Biohazard', '2017-01-24', 'http://images.techtimes.com/data/images/full/252477/resident-evil-7.jpg');
 
 -- --------------------------------------------------------
 
@@ -156,8 +156,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `pseudo`, `first_name`, `last_name`, `imgPath`, `flag`, `email`, `password`, `gender`, `birthdate`, `banned`, `validation`, `admin`) VALUES
-(1, 'tommywalkie', '', '', 'images/youtubers/tommywalkie.png', 'france', 'tommywalkie@gmail.com', '$2y$10$1VfV2RJ8AS1UxYIzJLzzqOaZovlIiPjFCLPuC1IOxq.2idW6/13Xy', 'M', '1995-06-19', 0, 1, 0),
-(2, 'NEWVACHE', '', '', 'images/unknown.png', 'france', 'tommywalkie@gmail.com', '$2y$10$1VfV2RJ8AS1UxYIzJLzzqOaZovlIiPjFCLPuC1IOxq.2idW6/13Xy', 'M', '1995-06-19', 0, 1, 0);
+(1, 'tommywalkie', '', '', 'images/youtubers/tommywalkie.png', 'france', 'tommywalkie@gmail.com', 'test', 'M', '1995-06-19', 0, 1, 0),
+(2, 'NEWVACHE', '', '', 'images/unknown.png', 'italie', 'newvache@gmail.com', 'test', 'M', '1995-06-19', 0, 1, 0),
+(3, 'Pascal', '', '', 'images/unknown.png', 'france', 'pascal.dupont@gmail.com', 'test', 'M', '1995-06-19', 0, 1, 0),
+(4, 'John', '', '', 'images/unknown.png', 'america-stars-and-stripes-united-united-states', 'john@gmail.com', 'test', 'M', '1995-06-19', 0, 1, 0),
+(5, 'Bernanda', '', '', 'images/unknown.png', 'spain', 'bernanda@gmail.com', 'test', 'F', '1995-06-19', 0, 1, 0),
+(6, 'Reinhardt', '', '', 'images/unknown.png', 'germany', 'reinhardt@gmail.com', 'test', 'M', '1995-06-19', 0, 1, 0);
 
 
 -- --------------------------------------------------------
